@@ -28,13 +28,19 @@ hr {
   border: none;
 }
 
-input {
+input, textarea {
   padding: 5px;
-  width: 100%;
+  width: auto;
   border-radius: 5px;
   border: none;
   border-bottom: 1px solid #b9c5b5;
   background: #f2f2f2;
+  margin-left: 10px;
+}
+
+textarea {
+  min-height: 40px;
+  resize: vertical;
 }
 
 button {
@@ -52,17 +58,54 @@ button {
 }
 
 .solid-btn:hover {
+  color: rgb(235, 213, 119);
   background-color: var(--mid-green);
 }
 
 .outline-btn {
-  border: 1px;
-  border-color: #8eb680;
+  border: 1px solid #8eb680;
   color: #8eb680;
-  background-color: none;
+  background-color: white;
 }
 
 .outline-btn:hover {
   border-color: rgb(235, 213, 119);
   color: rgb(235, 213, 119);
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.input-label {
+  text-align: start;
+  margin: 5px;
+}
+
+.material-symbols-rounded {
+  font-size: 40px;
+  /* color: white; */
+  top: 8px;
+  left: 43px;
+  position: absolute;
+}
+
+#bad {
+  background-color: #d35e56;
+}
+
+#mid {
+  background-color: #e3bb54;
+}
+
+
+#good {
+  background-color: #a4d268;
+}
+
+#good:checked {
+  border: 5px;
+  stroke: rgba(164, 210, 104, 0.38);
 }

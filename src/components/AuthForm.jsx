@@ -10,12 +10,12 @@ const AuthForm = () => {
       <hr />
       <InnerCard>
         <form>
-          <div className={styles.container}>
-            <label className={styles.label}>Username</label>
+          <div className="input-container">
+            <label className="input-label">Username</label>
             <input type="text" />
           </div>
-          <div className={styles.container}>
-            <label className={styles.label}>Password</label>
+          <div className="input-container">
+            <label className="input-label">Password</label>
             <input type="text" />
           </div>
           <button type="submit" className="solid-btn">
