@@ -1,0 +1,8 @@
+.outer {
+  width: 500px;
+  height: auto;
+  padding: 25px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #dce3d9 0%, #eee 50%, #fff 100%);
+  box-shadow: 4px 4px 4px 0px rgba(206, 206, 206, 0.5);
+}

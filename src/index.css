@@ -1,13 +1,13 @@
 :root {
-  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
   font-family: 'Raleway', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  --primary-color: #3b5632;
-  --secondary-color: #5A7351;
+  --dark-green: #3b5632;
+  --mid-green: #5A7351;
+  --light-green: #DCE3D9
 
-  color: var(--primary-color);
+  color: var(--dark-green);
   background-color: #ffffff;
 
   font-synthesis: none;
