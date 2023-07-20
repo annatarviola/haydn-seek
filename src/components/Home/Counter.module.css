@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Bellota Text', cursive;
+    letter-spacing: 4px;
+    margin: 0;
+    padding: 0;
+}
+
+.container p {
+    margin: 0;
+    font-size: 32px;
+}
+
+.container h2 {
+    margin: 10px;
+    font-size: 40px;
+    font-weight: 700;
+}

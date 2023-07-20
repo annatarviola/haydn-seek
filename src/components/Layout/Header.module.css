@@ -11,7 +11,7 @@
 
 .nav {
     display: flex;
-    gap: 6rem;
+    gap: 3rem;
     padding-right: 50px;
 }
 
@@ -19,6 +19,13 @@ h1 {
     font-family: 'Grechen Fuemen', cursive;
 }
 
-a:hover {
-    color: rgb(235, 213, 119)
+.nav_btn {
+    margin: 0;
+    background: none;
+    border: none;
+    color: white;
+}
+
+.nav_btn:hover {
+    color: var(--hover-yellow)
 }

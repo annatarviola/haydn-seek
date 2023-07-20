@@ -1,21 +1,22 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import Header from "./components/Layout/Header";
+import HomeScreen from "./components/Home/HomeScreen";
 import AuthForm from "./components/AuthForm";
 import AddLogForm from "./components/AddLogForm";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <Header />
       <div className="container">
-        {/* <AuthForm /> */}
-        <AddLogForm />
+        <Routes>
+          <Route index element={<HomeScreen />} />
+          <Route path="login" element={<AuthForm />} />
+          <Route path="add-new-log" element={<AddLogForm />} />
+        </Routes>
       </div>
     </>
   );

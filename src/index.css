@@ -5,7 +5,8 @@
 
   --dark-green: #3b5632;
   --mid-green: #5A7351;
-  --light-green: #DCE3D9
+  --light-green: #DCE3D9;
+  --hover-yellow: #ebd577;
 
   color: var(--dark-green);
   background-color: #ffffff;
@@ -19,6 +20,10 @@
 
 body {
   margin: 0
+}
+
+input, textarea, button {
+  font-family: "Raleway", sans-serif;
 }
 
 
