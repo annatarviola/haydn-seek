@@ -1,0 +1,14 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  margin-top: -15px;
+}
+
+.date_range {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+

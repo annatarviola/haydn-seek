@@ -1,0 +1,38 @@
+.log_preview {
+  width: 80%;
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 14px;
+}
+
+.good {
+  background-color: #bbddaf;
+}
+
+.mid {
+  background-color: #eadaa3;
+}
+
+.bad {
+  background-color: #ddb2af;
+}
+
+p {
+  margin-left: 10px;
+}
+
+.view_btn {
+  font-size: 13px;
+  margin: 0;
+  background: none;
+  border: none;
+  color: var(--dark-green);
+}
+
+.view_btn:hover {
+  color: white;
+}

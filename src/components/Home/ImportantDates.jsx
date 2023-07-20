@@ -6,8 +6,8 @@ const ImportantDates = () => {
     <OuterCard>
       <div className={styles.header}>
         <h3>Important Dates</h3>
-        <button type="button" className="plus-btn">
-          <span class="material-icons-round">add_circle_outline</span>
+        <button type="button" className="icon-btn">
+          <span className="material-icons-round">add_circle_outline</span>
         </button>
       </div>
       <hr />

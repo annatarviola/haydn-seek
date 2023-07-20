@@ -6,7 +6,7 @@ const Goals = () => {
     <OuterCard>
       <div className={styles.header}>
         <h3>Goals</h3>
-        <button type="button" className="plus-btn">
+        <button type="button" className="icon-btn">
           <span class="material-icons-round">add_circle_outline</span>
         </button>
       </div>
