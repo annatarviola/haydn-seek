@@ -15,13 +15,17 @@ const ImportantDates = () => {
         <li>
           <div className={styles.container}>
             <span className={styles.title}>Recital</span>
-            <span className={styles.date}>Sep 5, 2023</span>
+            <span className={styles.date}>
+              <span className={styles.time}>4 pm,</span> Sep 5, 2023
+            </span>
           </div>
         </li>
         <li>
           <div className={styles.container}>
             <span className={styles.title}>Concert</span>
-            <span className={styles.date}>Oct 23, 2023</span>
+            <span className={styles.date}>
+              <span className={styles.time}>7 pm,</span> Oct 23, 2023
+            </span>
           </div>
         </li>
       </ul>

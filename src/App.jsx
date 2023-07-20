@@ -4,8 +4,8 @@ import "./App.css";
 
 import Header from "./components/Layout/Header";
 import HomeScreen from "./components/Home/HomeScreen";
-import AuthForm from "./components/AuthForm";
-import AddLogForm from "./components/AddLogForm";
+import Auth from './components/Forms/Auth'
+import AddLogForm from './components/Forms/AddLogForm'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route index element={<HomeScreen />} />
-          <Route path="login" element={<AuthForm />} />
+          <Route path="login" element={<Auth />} />
           <Route path="add-new-log" element={<AddLogForm />} />
         </Routes>
       </div>
