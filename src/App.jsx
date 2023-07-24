@@ -8,6 +8,8 @@ import Auth from './components/Forms/Auth'
 import AddLogForm from './components/Forms/AddLogForm'
 import Register from "./components/Forms/Register";
 
+export const baseURL = "http://localhost:8080"
+
 function App() {
   return (
     <>

@@ -28,4 +28,21 @@
     font-weight: 400;
 }
 
+.addNew_container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.addNew_container > textarea, input {
+    background: white;
+}
+
+.dateTime_container {
+    display: flex;
+    margin-top: 10px;
+    gap: 20px;
+    justify-content: center;
+}
 

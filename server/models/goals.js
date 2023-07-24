@@ -1,15 +1,15 @@
-const { DataTypes } = require("sequelize")
+const { DataTypes } = require("sequelize");
 
-const { sequelize } = require('../util/database')
+const { sequelize } = require("../util/database");
 
 module.exports = {
-    Goal: sequelize.define("goal", {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            allowNull: false,
-            primaryKey: true,
-        },
-        text: DataTypes.STRING,
-    })
-}
+  Goal: sequelize.define("goal", {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
+    },
+    value: DataTypes.STRING,
+  }),
+};

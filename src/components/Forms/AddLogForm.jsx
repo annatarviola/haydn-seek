@@ -99,14 +99,12 @@ const AddLogForm = () => {
               <textarea rows="6" value={notes} onChange={(e) => setNotes(e.target.value)}/>
             </div>
           </div>
-          <div className={styles.btn_container}>
             <button className="outline-btn" type="submit" onClick={clearFormHandler}>
               Clear
             </button>
             <button className="solid-btn" type="submit">
               Save
             </button>
-          </div>
         </form>
       </InnerCard>
     </OuterCard>

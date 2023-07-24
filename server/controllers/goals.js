@@ -1,17 +1,17 @@
 module.exports = {
     getAllGoals: (req, res) => {
-        console.log('get daily log')
+        console.log('get goals')
     },
 
     addGoal: (req, res) => {
-        console.log('add practice log')
+        console.log('add goal')
     },
 
     editGoal: (req, res) => {
-        console.log('edit practice log')
+        console.log('edit goal')
     },
 
     deleteGoal: (req, res) => {
-        console.log('delete practice log')
+        console.log('delete goal')
     }
 }

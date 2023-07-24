@@ -54,21 +54,25 @@ app.put('/practicelogs/:id', isAuthenticated, editLog)
 app.delete('/practicelogs/:id', isAuthenticated, deleteLog)
 
 // IMPORTANT DATES
-app.get('/importantdates', isAuthenticated, getAllImportantDates)
-app.post('/importantdates', isAuthenticated, addDate)
-app.put('/importantdates/:id', isAuthenticated, editDate)
-app.delete('/importantdates/:id', isAuthenticated, deleteDate)
+app.get('/importantdates', getAllImportantDates)
+app.post('/importantdates', addDate)
+app.put('/importantdates/:id', editDate)
+app.delete('/importantdates/:id', deleteDate)
 
 // GOALS
-app.get('/goals', isAuthenticated, getAllGoals)
-app.post('/goals', isAuthenticated, addGoal)
-app.put('/goals/:id', isAuthenticated, editGoal)
-app.delete('/goals/:id', isAuthenticated, deleteGoal)
+app.get('/goals', getAllGoals)
+app.post('/goals', addGoal)
+app.put('/goals/:id', editGoal)
+app.delete('/goals/:id', deleteGoal)
 
-// the force: true is for development -- it DROPS tables!!!
-sequelize.sync({ force: true })
-// sequelize.sync()
-    .then(() => {
-        app.listen(PORT, () => console.log(`db sync successful & server running on port ${PORT}`))
-    })
-    .catch(err => console.log(err))
+// // the force: true is for development -- it DROPS tables!!!
+// sequelize.sync({ force: true })
+// // sequelize.sync()
+//     .then(() => {
+//         app.listen(PORT, () => console.log(`db sync successful & server running on port ${PORT}`))
+//     })
+//     .catch(err => console.log(err))
+
+app.listen(PORT, () => console.log(`db sync successful & server running on port ${PORT}`))
+
+

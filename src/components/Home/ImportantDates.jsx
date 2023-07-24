@@ -1,12 +1,20 @@
+import { useState } from "react";
+
 import OuterCard from "../Layout/OuterCard";
+import AddDate from "./AddDate";
 import styles from "./Dates&Goals.module.css";
 
 const ImportantDates = () => {
+  const [addingDate, setAddingDate] = useState(false)
+
+  const showAddNewDate = () => {
+    setAddingDate(!addingDate)
+  }
   return (
     <OuterCard>
       <div className={styles.header}>
         <h3>Important Dates</h3>
-        <button type="button" className="icon-btn">
+        <button type="button" className="icon-btn" onClick={showAddNewDate}>
           <span className="material-icons-round">add_circle_outline</span>
         </button>
       </div>
@@ -28,6 +36,7 @@ const ImportantDates = () => {
             </span>
           </div>
         </li>
+        {addingDate && <AddDate onClose={showAddNewDate}/>}
       </ul>
     </OuterCard>
   );

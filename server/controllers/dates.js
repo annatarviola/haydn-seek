@@ -4,14 +4,14 @@ module.exports = {
     },
 
     addDate: (req, res) => {
-        console.log('add practice log')
+        console.log('add date')
     },
 
     editDate: (req, res) => {
-        console.log('edit practice log')
+        console.log('edit date')
     },
 
     deleteDate: (req, res) => {
-        console.log('delete practice log')
+        console.log('delete date')
     }
 }

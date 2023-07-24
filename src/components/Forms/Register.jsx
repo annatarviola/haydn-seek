@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -6,9 +6,11 @@ import axios from "axios";
 import OuterCard from "../Layout/OuterCard";
 import InnerCard from "../Layout/InnerCard";
 import AuthContext from "../../store/authContext";
+import styles from "./Register.module.css";
+import { baseURL } from "../../App"
 
 const Register = () => {
-  const baseURL = "http://localhost:5173";
+  const authCtx = useContext(AuthContext);
 
   const initialValues = {
     firstName: "",
@@ -19,20 +21,43 @@ const Register = () => {
     passwordConfirmation: "",
   };
 
+  const validationSchema = Yup.object({
+    firstName: Yup.string()
+      .max(20, "Must be 20 characters or less")
+      .required("Required"),
+    lastName: Yup.string()
+      .max(20, "Must be 20 characters or less")
+      .required("Required"),
+    email: Yup.string().email("Invalid email address").required("Required"),
+    username: Yup.string()
+      .max(20, "Must be 20 characters or less")
+      .required("Required"),
+    password: Yup.string()
+      .min(8, "Must be at least 8 characters")
+      .required("Required"),
+    passwordConfirmation: Yup.string()
+      .oneOf([Yup.ref("password")], "Your passwords do not match.")
+      .required("Please retype your password."),
+  });
+
   const errStyle = { color: "#b12a2a", fontSize: "14px" };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (values) => {
+    console.log(values);
 
-    const body = {
-      firstName,
-      lastName,
-      email,
-      username,
-      password,
-    };
+    const { firstName, lastName, email, username, password } = values;
 
-    axios.post();
+    const body = { firstName, lastName, email, username, password };
+
+    console.log(body);
+
+    axios
+      .post(`${baseURL}/register`, body)
+      .then((res) => {
+        console.log("AFTER REGISTRATION", res.data);
+        authCtx.login(res.data.token, res.data.exp, res.data.userId);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -42,32 +67,8 @@ const Register = () => {
       <InnerCard>
         <Formik
           initialValues={initialValues}
-          validationSchema={Yup.object({
-            firstName: Yup.string()
-              .max(20, "Must be 20 characters or less")
-              .required("Required"),
-            lastName: Yup.string()
-              .max(20, "Must be 20 characters or less")
-              .required("Required"),
-            email: Yup.string()
-              .email("Invalid email address")
-              .required("Required"),
-            username: Yup.string()
-              .max(20, "Must be 20 characters or less")
-              .required("Required"),
-            password: Yup.string()
-              .min(8, "Must be at least 8 characters")
-              .required("Required"),
-            passwordConfirmation: Yup.string()
-              .oneOf([Yup.ref("password")], "Your passwords do not match.")
-              .required("Please retype your password."),
-          })}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
-          }}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
         >
           <Form>
             <div className="input-container">
