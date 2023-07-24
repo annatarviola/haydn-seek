@@ -23,16 +23,20 @@
 
 p {
   margin-left: 10px;
+  font-weight: 500;
 }
 
 .view_btn {
-  font-size: 13px;
+  letter-spacing: .5px;
+  font-size: 12px;
   margin: 0;
   background: none;
   border: none;
   color: var(--dark-green);
+  transition: .3s;
 }
 
 .view_btn:hover {
+  text-shadow: 0px 0px 2px white;
   color: white;
 }

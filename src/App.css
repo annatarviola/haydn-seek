@@ -54,11 +54,6 @@ button {
   padding: 8px 25px;
 }
 
-button:hover {
-  text-shadow: 0px 0px 2px white;
-  
-}
-
 ul {
   text-align: start;
   margin-left: -15px;
@@ -68,6 +63,7 @@ ul {
   border: none;
   background-color: #8eb680;
   color: white;
+  transition: .3s
 }
 
 .solid-btn:hover {
@@ -79,6 +75,8 @@ ul {
   border: 1px solid #8eb680;
   color: #8eb680;
   background-color: white;
+  transition: .3s;
+
 }
 
 .outline-btn:hover {
@@ -93,6 +91,7 @@ ul {
   border: none;
   background: none;
   color: var(--dark-green);
+  transition: .3s;
 }
 
 .icon-btn:hover {

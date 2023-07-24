@@ -16,11 +16,9 @@ const Auth = () => {
     password,
   };
 
-  const submitHandler = e => {
-    e.preventDefault()
-
-    
-  }
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <OuterCard>
@@ -44,7 +42,9 @@ const Auth = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button className="outline-btn">Sign Up</button>
+          <Link to="/register">
+            <button className="outline-btn">Need to Sign Up?</button>
+          </Link>
           <button type="submit" className="solid-btn">
             Login
           </button>

@@ -1,31 +1,32 @@
 .header {
-    height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    background-color: #5a7351;
-    padding: 0 50px;
-    box-sizing: border-box;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: #5a7351;
+  padding: 0 50px;
+  box-sizing: border-box;
 }
 
 .nav {
-    display: flex;
-    gap: 3rem;
-    padding-right: 50px;
+  display: flex;
+  gap: 3rem;
+  padding-right: 50px;
 }
 
 h1 {
-    font-family: 'Grechen Fuemen', cursive;
+  font-family: "Grechen Fuemen", cursive;
 }
 
 .nav_btn {
-    margin: 0;
-    background: none;
-    border: none;
-    color: white;
+  margin: 0;
+  background: none;
+  border: none;
+  color: white;
+  transition: 0.3s;
 }
 
 .nav_btn:hover {
-    color: var(--hover-yellow)
+  color: var(--hover-yellow);
 }
