@@ -1,11 +1,11 @@
 :root {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   --dark-green: #3b5632;
-  --mid-green: #5A7351;
-  --light-green: #DCE3D9;
+  --mid-green: #94b888;
+  --light-green: #dce3d9;
   --hover-yellow: #ebc446;
 
   color: var(--dark-green);
@@ -18,12 +18,25 @@
   -webkit-text-size-adjust: 100%;
 }
 
-body {
-  margin: 0
+html {
+  min-height: 100%;
+  background: linear-gradient(
+      0deg,
+      rgba(222, 230, 219, 0.5),
+      rgba(251, 255, 249, 0.70),
+      rgba(255, 255, 255, 0.85)
+    ),
+    url("./assets/backgroundimg/4879447.jpg");
+  background-size: cover;
 }
 
-input, textarea, button {
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+input,
+textarea,
+button {
   font-family: "Raleway", sans-serif;
 }
-
-
