@@ -29,6 +29,7 @@ const AddGoal = (props) => {
   return (
     <div className={styles.addNew_container}>
       <textarea
+        className={styles.addNew_input}
         rows="2"
         placeholder="What's your new goal?"
         value={value}

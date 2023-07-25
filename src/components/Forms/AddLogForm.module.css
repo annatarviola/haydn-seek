@@ -5,12 +5,42 @@
   margin-bottom: 10px;
 }
 
-.radio_container input[type="radio"] {
+.radio {
   appearance: none;
   width: 50px;
   height: 50px;
   border: none;
   border-radius: 50%;
+}
+
+.bad {
+  outline: none #d35e5683;
+}
+
+.mid {
+  outline: none #e3bb5483;
+}
+
+.good {
+  outline: none #a4d26883;
+}
+
+.radio:checked {
+  width: 55px;
+  height: 55px;
+  transition: outline 200ms, width 200ms, height 200ms;
+}
+
+.bad:checked {
+  outline: 10px solid #d35e5683;
+}
+
+.mid:checked {
+  outline: 10px solid #e3bb5483;
+}
+
+.good:checked {
+  outline: 10px solid #a4d26883;
 }
 
 .time_container {
@@ -30,4 +60,3 @@
   -webkit-appearance: none;
   margin: 0;
 }
-

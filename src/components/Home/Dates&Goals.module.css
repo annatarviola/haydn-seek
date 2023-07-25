@@ -12,7 +12,7 @@
 }
 
 .title {
-    font-size: 18px;
+    font-size: 16px;
     margin-left: 10px;
 }
 
@@ -24,6 +24,7 @@
 }
 
 .time {
+    margin-left: 4px;
     font-family: "Bellota Text";
     font-weight: 400;
 }
@@ -35,7 +36,7 @@
     justify-content: space-between;
 }
 
-.addNew_container > textarea, input {
+.addNew_input {
     background: white;
 }
 

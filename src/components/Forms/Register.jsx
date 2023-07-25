@@ -7,7 +7,7 @@ import OuterCard from "../Layout/OuterCard";
 import InnerCard from "../Layout/InnerCard";
 import AuthContext from "../../store/authContext";
 import styles from "./Register.module.css";
-import { baseURL } from "../../App"
+import { baseURL } from "../../App";
 
 const Register = () => {
   const authCtx = useContext(AuthContext);

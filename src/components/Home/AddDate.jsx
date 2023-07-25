@@ -35,6 +35,7 @@ const AddDate = (props) => {
   return (
     <div className={styles.addNew_container}>
       <textarea
+        className={styles.addNew_input}
         rows="2"
         placeholder="Description"
         value={description}
@@ -42,11 +43,13 @@ const AddDate = (props) => {
       />
       <div className={styles.dateTime_container}>
         <input
+          className={styles.addNew_input}
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
         <input
+          className={styles.addNew_input}
           type="time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
@@ -59,7 +62,10 @@ const AddDate = (props) => {
         <button
           className="solid-btn"
           type="submit"
-          onClick={(e) => {props.onClose(); submitHandler(e)}}
+          onClick={(e) => {
+            props.onClose();
+            submitHandler(e);
+          }}
         >
           Save
         </button>

@@ -27,6 +27,7 @@ const getLocalData = () => {
   if (remainingTime <= 1000 * 60 * 30) {
     localStorage.removeItem("token");
     localStorage.removeItem("exp");
+    localStorage.removeItem("userId");
 
     return null;
   }
@@ -52,7 +53,7 @@ export const AuthContextProvider = (props) => {
   const [token, setToken] = useState(initialToken);
   const [userId, setUserId] = useState(initialId);
 
-  const logout = (token, id) => {
+  const logout = useCallback(() => {
     setToken(null)
     setUserId(null)
     localStorage.remove('token')
@@ -62,7 +63,7 @@ export const AuthContextProvider = (props) => {
     if (logoutTimer) {
       clearTimeout(logoutTimer)
     }
-  };
+  }, []);
 
   const login = (token, exp, userId) => {
     setToken(token);

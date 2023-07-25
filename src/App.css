@@ -38,10 +38,6 @@ textarea {
   margin-left: 10px;
 }
 
-input:focus {
-  border: none;
-}
-
 textarea {
   min-height: 40px;
   resize: vertical;
@@ -117,19 +113,14 @@ ul {
   position: absolute;
 }
 
-#bad {
+.bad {
   background-color: #d35e56;
 }
 
-#mid {
+.mid {
   background-color: #e3bb54;
 }
 
-#good {
+.good {
   background-color: #a4d268;
-}
-
-#good:checked {
-  border: 5px;
-  stroke: rgba(164, 210, 104, 0.38);
 }
