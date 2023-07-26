@@ -4,13 +4,13 @@ import axios from "axios";
 import OuterCard from "../Layout/OuterCard";
 import InnerCard from "../Layout/InnerCard";
 import AuthContext from "../../store/authContext";
-import { baseURL } from "../../App"
+import { baseURL } from "../../App";
 
 const Auth = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const authCtx = useContext(AuthContext)
+  const authCtx = useContext(AuthContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -20,12 +20,19 @@ const Auth = () => {
       password,
     };
 
-    axios.post(`${baseURL}/login`, body)
-    .then(res => {
-      console.log('AFTER AUTH', res.data)
-      authCtx.login(res.data.token, res.data.exp, res.data.userId);
-    })
-    .catch(err => console.log(err))
+    console.log(body);
+
+    axios
+      .post(`${baseURL}/login`, body)
+      .then((res) => {
+        console.log("AFTER AUTH", res.data);
+        authCtx.login(res.data.token, res.data.exp, res.data.userId);
+      })
+      .catch((err) => {
+        console.log(err);
+        setUsername("");
+        setPassword("");
+      });
   };
 
   return (

@@ -1,7 +1,9 @@
 import { useState } from "react";
+import axios from "axios";
 
 import OuterCard from "../Layout/OuterCard";
 import InnerCard from "../Layout/InnerCard";
+import { baseURL } from "../../App";
 
 import styles from "./AddLogForm.module.css";
 
@@ -31,7 +33,11 @@ const AddLogForm = () => {
     // const body = {date, hours, minutes, scales, exercises, repertoire, notes, userId}
 
     axios
-      .post("/logs", body)
+      .post(`${baseURL}/logs`, body, {
+        headers: {
+          authorization: token,
+        },
+      })
       .then(console.log(body), clearFormHandler())
       .catch((err) => console.log(err));
 
