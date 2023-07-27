@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 
 import OuterCard from "../Layout/OuterCard";
@@ -6,11 +6,15 @@ import InnerCard from "../Layout/InnerCard";
 import { baseURL } from "../../App";
 
 import styles from "./AddLogForm.module.css";
+import AuthContext from "../../store/authContext";
 
 const AddLogForm = () => {
+  const {token, userId} = useContext(AuthContext)
+
   const [date, setDate] = useState("");
-  const [hours, setHours] = useState("");
-  const [minutes, setMinutes] = useState("");
+  const [quality, setQuality] = useState("");
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
   const [scales, setScales] = useState("");
   const [exercises, setExercises] = useState("");
   const [repertoire, setRepertoire] = useState("");
@@ -18,6 +22,7 @@ const AddLogForm = () => {
 
   const clearFormHandler = () => {
     setDate("");
+    setQuality("")
     setHours("");
     setMinutes("");
     setScales("");
@@ -26,26 +31,46 @@ const AddLogForm = () => {
     setNotes("");
   };
 
+  const hourChangeHandler = (e) => {
+    const enteredHours = +e.target.value
+
+    if (enteredHours === '') {
+      setHours(0)
+    } else {
+      setHours(enteredHours)
+    }
+  }
+
+  const minuteChangeHandler = (e) => {
+    const enteredMinutes = +e.target.value
+
+    if (enteredMinutes === '') {
+      setMinutes(0)
+    } else {
+      setMinutes(enteredMinutes)
+    }
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const body = { date, hours, minutes, scales, exercises, repertoire, notes };
-    // const body = {date, hours, minutes, scales, exercises, repertoire, notes, userId}
+
+    if (minutes === '') {
+      setMinutes(0)
+    } else {
+      setMinutes(+minutes)
+    }
+
+    const body = {date, quality, hours, minutes, scales, exercises, repertoire, notes, userId }
 
     axios
-      .post(`${baseURL}/logs`, body, {
+      .post(`${baseURL}/practicelogs`, body, {
         headers: {
           authorization: token,
         },
       })
-      .then(console.log(body), clearFormHandler())
+      .then(console.log(body))
       .catch((err) => console.log(err));
-
-    // axios.post('/logs', body, {
-    //   headers: {
-    //     authorization: token
-    //   }
-    // })
   };
 
   return (
@@ -72,18 +97,21 @@ const AddLogForm = () => {
                 name="quality"
                 value="bad"
                 className={`bad ${styles.bad} ${styles.radio}`}
+                onChange={(e) => setQuality("bad")}
               />
               <input
                 type="radio"
                 name="quality"
                 value="mid"
                 className={`mid ${styles.mid} ${styles.radio}`}
+                onChange={(e) => setQuality("mid")}
               />
               <input
                 type="radio"
                 name="quality"
                 value="good"
                 className={`good ${styles.good} ${styles.radio}`}
+                onChange={(e) => setQuality("good")}
               />
             </div>
             <div className={styles.time_container}>
@@ -95,7 +123,7 @@ const AddLogForm = () => {
                   step="1"
                   className={styles.number}
                   value={hours}
-                  onChange={(e) => setHours(e.target.value)}
+                  onChange={hourChangeHandler}
                 />
                 hr
               </label>
@@ -107,7 +135,7 @@ const AddLogForm = () => {
                   step="1"
                   className={styles.number}
                   value={minutes}
-                  onChange={(e) => setMinutes(e.target.value)}
+                  onChange={minuteChangeHandler}
                 />
                 min
               </label>
