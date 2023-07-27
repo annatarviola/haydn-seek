@@ -1,15 +1,59 @@
-import { useState } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
+import axios from "axios";
 
 import OuterCard from "../Layout/OuterCard";
-import AddGoal from './AddGoal'
+import AddGoal from "./AddGoal";
 import styles from "./Dates&Goals.module.css";
+import { baseURL } from "../../App";
+import AuthContext from "../../store/authContext";
 
 const Goals = () => {
-  const [addingGoal, setAddingGoal] = useState(false)
+  const { userId, token } = useContext(AuthContext);
+
+  const [addingGoal, setAddingGoal] = useState(false);
+  const [goals, setGoals] = useState([]);
 
   const showAddNewGoal = () => {
-    setAddingGoal(!addingGoal)
-  }
+    setAddingGoal(!addingGoal);
+  };
+
+  const deleteGoal = (id) => {
+    axios
+      .delete(`${baseURL}/goals/${id}`, {
+        headers: {
+          authentication: token,
+        },
+      })
+      .then(() => {
+        getGoals();
+      })
+      .catch(err => console.log(err));
+  };
+
+  const getGoals = useCallback(() => {
+    axios
+      .get(`${baseURL}/goals/${userId}`, {
+        headers: {
+          authentication: token,
+        },
+      })
+      .then((res) => {
+        setGoals(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [setGoals]);
+
+  useEffect(() => {
+    getGoals();
+  }, [getGoals]);
+
+  const mappedGoals = goals.map((goal) => {
+    return (
+      <li key={goal.id} onClick={() => deleteGoal(goal.id)}>
+        <span className={styles.title}>{goal.value}</span>
+      </li>
+    );
+  });
 
   return (
     <OuterCard>
@@ -21,12 +65,15 @@ const Goals = () => {
       </div>
       <hr />
       <ul>
-        <li>
-          <span className={styles.title}>Polish Hindemith</span>
-        </li>
-        <li>
-        <span className={styles.title}>Intonation in Brahms</span></li>
-        {addingGoal && <AddGoal onClose={showAddNewGoal}/>}
+        {mappedGoals}
+        {addingGoal && (
+          <AddGoal
+            onClose={(e) => {
+              showAddNewGoal(e);
+              getGoals(e);
+            }}
+          />
+        )}
       </ul>
     </OuterCard>
   );

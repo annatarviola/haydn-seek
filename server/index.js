@@ -48,22 +48,22 @@ app.post("/register", register);
 app.post("/login", login);
 
 // PRACTICE LOGS 
-app.get('/practicelogs', isAuthenticated, getDailyLogs)
-app.post('/practicelogs', isAuthenticated, addLog)
-app.put('/practicelogs/:id', isAuthenticated, editLog)
-app.delete('/practicelogs/:id', isAuthenticated, deleteLog)
+app.get('/practicelogs/:userId', getDailyLogs)
+app.post('/practicelogs', addLog)
+app.put('/practicelogs/:id', editLog)
+app.delete('/practicelogs/:id', deleteLog)
 
 // IMPORTANT DATES
-app.get('/importantdates', isAuthenticated, getAllImportantDates)
-app.post('/importantdates', isAuthenticated, addDate)
-app.put('/importantdates/:id', isAuthenticated, editDate)
-app.delete('/importantdates/:id', isAuthenticated, deleteDate)
+app.get('/importantdates/:userId', getAllImportantDates)
+app.post('/importantdates', addDate)
+app.put('/importantdates/:id', editDate)
+app.delete('/importantdates/:id', deleteDate)
 
 // GOALS
-app.get('/goals', isAuthenticated, getAllGoals)
-app.post('/goals', isAuthenticated, addGoal)
-app.put('/goals/:id', isAuthenticated, editGoal)
-app.delete('/goals/:id', isAuthenticated, deleteGoal)
+app.get('/goals/:userId', getAllGoals)
+app.post('/goals', addGoal)
+app.put('/goals/:id', editGoal)
+app.delete('/goals/:id', deleteGoal)
 
 // the force: true is for development -- it DROPS tables!!!
 // sequelize.sync({ force: true })

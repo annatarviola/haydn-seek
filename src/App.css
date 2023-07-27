@@ -50,6 +50,10 @@ button {
   padding: 8px 25px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 ul {
   text-align: start;
   margin-left: -15px;
@@ -91,7 +95,7 @@ ul {
 }
 
 .icon-btn:hover {
-  color: var(--hover-yellow)
+  color: var(--hover-yellow);
 }
 
 .input-container {

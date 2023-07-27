@@ -13,28 +13,29 @@ const AddGoal = (props) => {
     e.preventDefault();
 
     axios
-      .post(
-        `${baseURL}/goals`,
-        { value },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
+    .post(
+      `${baseURL}/goals`,
+      { value, userId },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
       )
       .then(setValue(""))
       .catch((err) => console.log(err));
-  };
-
-  return (
-    <div className={styles.addNew_container}>
+      
+    };
+    
+    return (
+      <div className={styles.addNew_container}>
       <textarea
         className={styles.addNew_input}
         rows="2"
         placeholder="What's your new goal?"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-      />
+        />
       <div className={styles.container}>
         <button className="outline-btn" onClick={props.onClose}>
           Cancel
@@ -43,8 +44,8 @@ const AddGoal = (props) => {
           className="solid-btn"
           type="submit"
           onClick={(e) => {
-            props.onClose();
             submitHandler(e);
+            // props.onClose(e);
           }}
         >
           Save

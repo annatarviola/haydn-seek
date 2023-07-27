@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import OuterCard from "../Layout/OuterCard";
@@ -9,7 +10,8 @@ import styles from "./AddLogForm.module.css";
 import AuthContext from "../../store/authContext";
 
 const AddLogForm = () => {
-  const {token, userId} = useContext(AuthContext)
+  const { token, userId } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const [date, setDate] = useState("");
   const [quality, setQuality] = useState("");
@@ -22,7 +24,7 @@ const AddLogForm = () => {
 
   const clearFormHandler = () => {
     setDate("");
-    setQuality("")
+    setQuality("");
     setHours("");
     setMinutes("");
     setScales("");
@@ -32,36 +34,41 @@ const AddLogForm = () => {
   };
 
   const hourChangeHandler = (e) => {
-    const enteredHours = +e.target.value
+    const enteredHours = +e.target.value;
 
-    if (enteredHours === '') {
-      setHours(0)
+    if (enteredHours === "") {
+      setHours(0);
     } else {
-      setHours(enteredHours)
+      setHours(enteredHours);
     }
-  }
+  };
 
   const minuteChangeHandler = (e) => {
-    const enteredMinutes = +e.target.value
+    const enteredMinutes = +e.target.value;
 
-    if (enteredMinutes === '') {
-      setMinutes(0)
+    if (enteredMinutes === "") {
+      setMinutes(0);
     } else {
-      setMinutes(enteredMinutes)
+      setMinutes(enteredMinutes);
     }
-  }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
+    const parsedDate = new Date(date);
 
-    if (minutes === '') {
-      setMinutes(0)
-    } else {
-      setMinutes(+minutes)
-    }
-
-    const body = {date, quality, hours, minutes, scales, exercises, repertoire, notes, userId }
+    const body = {
+      parsedDate,
+      quality,
+      hours,
+      minutes,
+      scales,
+      exercises,
+      repertoire,
+      notes,
+      userId,
+    };
 
     axios
       .post(`${baseURL}/practicelogs`, body, {
@@ -69,7 +76,7 @@ const AddLogForm = () => {
           authorization: token,
         },
       })
-      .then(console.log(body))
+      .then(console.log(body), navigate('/'))
       .catch((err) => console.log(err));
   };
 
