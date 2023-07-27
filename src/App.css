@@ -51,6 +51,7 @@ button {
 }
 
 button:hover {
+  transition: 0.3s;
   cursor: pointer;
 }
 
@@ -63,7 +64,6 @@ ul {
   border: none;
   background-color: #8eb680;
   color: white;
-  transition: .3s
 }
 
 .solid-btn:hover {
@@ -75,8 +75,6 @@ ul {
   border: 1px solid #8eb680;
   color: #8eb680;
   background-color: white;
-  transition: .3s;
-
 }
 
 .outline-btn:hover {
@@ -91,11 +89,26 @@ ul {
   border: none;
   background: none;
   color: var(--dark-green);
-  transition: .3s;
 }
 
 .icon-btn:hover {
   color: var(--hover-yellow);
+}
+
+.edit-btn {
+  padding: none;
+  border: none;
+  background: none;
+  font-size: 16px;
+  margin-left: 20px;
+  color: rgb(168, 182, 168);
+  font-family: "Material Icons";
+}
+
+.edit-btn:hover {
+  color: var(--hover-yellow);
+  transition: .3s;
+  cursor: pointer;
 }
 
 .input-container {

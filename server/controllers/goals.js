@@ -25,10 +25,6 @@ module.exports = {
     }
   },
 
-  editGoal: (req, res) => {
-    console.log("edit goal");
-  },
-
   deleteGoal: async (req, res) => {
     try {
       const { id } = req.params;

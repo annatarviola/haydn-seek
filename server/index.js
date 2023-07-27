@@ -27,7 +27,6 @@ const {
 const {
   getAllGoals,
   addGoal,
-  editGoal,
   deleteGoal,
 } = require("./controllers/goals");
 
@@ -62,7 +61,6 @@ app.delete('/importantdates/:id', deleteDate)
 // GOALS
 app.get('/goals/:userId', getAllGoals)
 app.post('/goals', addGoal)
-app.put('/goals/:id', editGoal)
 app.delete('/goals/:id', deleteGoal)
 
 // the force: true is for development -- it DROPS tables!!!

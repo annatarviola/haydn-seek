@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import axios from "axios";
 
 import OuterCard from "../Layout/OuterCard";
@@ -17,35 +17,68 @@ const ImportantDates = () => {
     setAddingDate(!addingDate);
   };
 
-  // const getDates = () => {
-  //   axios
-  //     .get(`${baseURL}/importantdates/${userId}`, {
-  //       headers: {
-  //         authentication: token,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       setDates(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  const deleteDate = (id) => {
+    axios
+      .delete(`${baseURL}/importantdates/${id}`, {
+        headers: {
+          authentication: token,
+        },
+      })
+      .then(() => {
+        getDates();
+      })
+      .catch((err) => console.log(err));
+  };
 
-  // useEffect(() => {
-  //   getDates();
-  // }, []);
+  const getDates = useCallback(() => {
+    axios
+      .get(`${baseURL}/importantdates/${userId}`, {
+        headers: {
+          authentication: token,
+        },
+      })
+      .then((res) => {
+        setDates(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [setDates]);
 
-  // const mappedDates = dates.map((date) => {
-  //   return (
-  //     <li key={date.id}>
-  //       <div className={styles.container}>
-  //         <span className={styles.title}>{date.description}</span>
-  //         <span className={styles.date}>
-  //           {date.date}, <span className={styles.time}>{date.time}</span>
-  //         </span>
-  //       </div>
-  //     </li>
-  //   );
-  // });
+  useEffect(() => {
+    getDates();
+  }, [getDates]);
+
+  const mappedDates = dates.map((date) => {
+    let formattedDate = new Date(date.date.split("-")).toLocaleDateString(
+      "en-us",
+      {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }
+    );
+
+    let time = date.time.split(":");
+    let hours = time[0];
+    let ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    let min = time[1];
+
+    return (
+      <li key={date.id}>
+        <div className={styles.container}>
+          <span className={styles.title}>{date.description}</span>
+          <span className={styles.date}>
+            {formattedDate},{" "}
+            <span className={styles.time}>
+              {hours}:{min} {ampm}
+            </span>
+            <span className="material-icons-round edit-btn">edit</span>
+          </span>
+        </div>
+      </li>
+    );
+  });
 
   return (
     <OuterCard>
@@ -57,7 +90,7 @@ const ImportantDates = () => {
       </div>
       <hr />
       <ul>
-        {/* {mappedDates} */}
+        {mappedDates}
         {addingDate && <AddDate onClose={showAddNewDate} />}
       </ul>
     </OuterCard>

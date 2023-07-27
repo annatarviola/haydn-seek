@@ -17,7 +17,7 @@ const AddDate = (props) => {
     axios
       .post(
         `${baseURL}/importantdates`,
-        { description, date, time },
+        { description, date, time, userId },
         {
           headers: {
             authorization: token,

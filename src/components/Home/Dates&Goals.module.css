@@ -24,7 +24,7 @@
 .date {
     font-size: 15px;
     font-weight: 600;
-    margin-right: 25px;
+    /* margin-right: 25px; */
     white-space: nowrap;
 }
 
