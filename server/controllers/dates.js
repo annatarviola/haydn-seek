@@ -29,7 +29,15 @@ module.exports = {
     console.log("edit date");
   },
 
-  deleteDate: (req, res) => {
-    console.log("delete date");
+  deleteDate: async (req, res) => {
+    try {
+      const { id } = req.params
+      await Date.destroy({ where: { id: +id }})
+      res.status(200)
+    } catch (error) {
+      console.log('error in deleteDate')
+      console.log(error)
+      res.sendStatus(400)
+    }
   },
 };

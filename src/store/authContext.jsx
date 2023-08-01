@@ -56,9 +56,9 @@ export const AuthContextProvider = (props) => {
   const logout = useCallback(() => {
     setToken(null)
     setUserId(null)
-    localStorage.remove('token')
-    localStorage.remove('token')
-    localStorage.remove('userId')
+    localStorage.removeItem('token')
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
 
     if (logoutTimer) {
       clearTimeout(logoutTimer)

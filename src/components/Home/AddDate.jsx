@@ -28,6 +28,7 @@ const AddDate = (props) => {
         setDescription("");
         setDate("");
         setTime("");
+        props.onSave()
       })
       .catch((err) => console.log(err));
   };
@@ -63,7 +64,7 @@ const AddDate = (props) => {
           className="solid-btn"
           type="submit"
           onClick={(e) => {
-            props.onClose();
+            props.onClose(e);
             submitHandler(e);
           }}
         >

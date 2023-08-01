@@ -79,10 +79,10 @@ module.exports = {
             token, exp
           })
         } else {
-          res.status(400).send('Unable to authenticate.')
+          res.status(401).send('Unable to authenticate.')
         }
       } else {
-        res.status(400).send('Unable to login.')
+        res.status(401).send('Unable to login.')
       }
     } catch (err) {
       res.sendStatus(400);

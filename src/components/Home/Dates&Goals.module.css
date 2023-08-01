@@ -11,12 +11,12 @@
     align-items: baseline;
 }
 
-.title {
+.goal_title, .date_title  {
     font-size: 16px;
     margin-left: 10px;
 }
 
-.title:hover {
+.goal_title:hover {
     color: #8b948b;
     text-decoration: line-through;
 }

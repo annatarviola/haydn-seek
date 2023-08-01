@@ -27,7 +27,7 @@ const Goals = () => {
       .then(() => {
         getGoals();
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   const getGoals = useCallback(() => {
@@ -50,7 +50,7 @@ const Goals = () => {
   const mappedGoals = goals.map((goal) => {
     return (
       <li key={goal.id} onClick={() => deleteGoal(goal.id)}>
-        <span className={styles.title}>{goal.value}</span>
+        <span className={styles.goal_title}>{goal.value}</span>
       </li>
     );
   });
@@ -60,20 +60,13 @@ const Goals = () => {
       <div className={styles.header}>
         <h3>Goals</h3>
         <button type="button" className="icon-btn" onClick={showAddNewGoal}>
-          <span class="material-icons-round">add_circle_outline</span>
+          <span className="material-icons-round">add_circle_outline</span>
         </button>
       </div>
       <hr />
       <ul>
         {mappedGoals}
-        {addingGoal && (
-          <AddGoal
-            onClose={(e) => {
-              showAddNewGoal(e);
-              getGoals(e);
-            }}
-          />
-        )}
+        {addingGoal && <AddGoal onClose={showAddNewGoal} onSave={getGoals}/>}
       </ul>
     </OuterCard>
   );

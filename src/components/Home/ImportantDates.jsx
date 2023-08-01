@@ -65,9 +65,9 @@ const ImportantDates = () => {
     let min = time[1];
 
     return (
-      <li key={date.id}>
+      <li key={date.id} >
         <div className={styles.container}>
-          <span className={styles.title}>{date.description}</span>
+          <span className={styles.date_title}>{date.description}</span>
           <span className={styles.date}>
             {formattedDate},{" "}
             <span className={styles.time}>
@@ -91,7 +91,7 @@ const ImportantDates = () => {
       <hr />
       <ul>
         {mappedDates}
-        {addingDate && <AddDate onClose={showAddNewDate} />}
+        {addingDate && <AddDate onClose={showAddNewDate} onSave={getDates()}/>}
       </ul>
     </OuterCard>
   );

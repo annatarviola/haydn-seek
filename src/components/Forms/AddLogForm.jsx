@@ -11,12 +11,12 @@ import AuthContext from "../../store/authContext";
 
 const AddLogForm = () => {
   const { token, userId } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [date, setDate] = useState("");
   const [quality, setQuality] = useState("");
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
+  let [hours, setHours] = useState(0);
+  let [minutes, setMinutes] = useState(0);
   const [scales, setScales] = useState("");
   const [exercises, setExercises] = useState("");
   const [repertoire, setRepertoire] = useState("");
@@ -33,40 +33,46 @@ const AddLogForm = () => {
     setNotes("");
   };
 
-  const hourChangeHandler = (e) => {
-    const enteredHours = +e.target.value;
-
-    if (enteredHours === "") {
-      setHours(0);
-    } else {
-      setHours(enteredHours);
-    }
-  };
-
-  const minuteChangeHandler = (e) => {
-    const enteredMinutes = +e.target.value;
-
-    if (enteredMinutes === "") {
-      setMinutes(0);
-    } else {
-      setMinutes(enteredMinutes);
-    }
-  };
-
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const parsedDate = new Date(date);
+    let optionalValues = [quality, scales, exercises, repertoire, notes];
+
+    for (let i = 0; i < optionalValues.length; i++) {
+      if (optionalValues[i].trim() === "") {
+        optionalValues[i] = "None";
+      }
+    }
+
+    if (hours === "") {
+      hours = 0;
+    }
+
+    if (minutes === "") {
+      minutes = 0;
+    }
+
+    let sentQuality = optionalValues[0];
+    let sentScales = optionalValues[1];
+    let sentExercises = optionalValues[2];
+    let sentRepertoire = optionalValues[3];
+    let sentNotes = optionalValues[4];
+
+    const parsedDate = new Date(date.split("-")).toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
 
     const body = {
       parsedDate,
-      quality,
+      sentQuality,
       hours,
       minutes,
-      scales,
-      exercises,
-      repertoire,
-      notes,
+      sentScales,
+      sentExercises,
+      sentRepertoire,
+      sentNotes,
       userId,
     };
 
@@ -76,8 +82,12 @@ const AddLogForm = () => {
           authorization: token,
         },
       })
-      .then(console.log(body), navigate('/'))
+      .then(
+        console.log(body),
+        navigate("/")
+      )
       .catch((err) => console.log(err));
+
   };
 
   return (
@@ -92,6 +102,7 @@ const AddLogForm = () => {
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
+              required={true}
             />
           </div>
           <div className="input-container">
@@ -104,21 +115,21 @@ const AddLogForm = () => {
                 name="quality"
                 value="bad"
                 className={`bad ${styles.bad} ${styles.radio}`}
-                onChange={(e) => setQuality("bad")}
+                onChange={() => setQuality("bad")}
               />
               <input
                 type="radio"
                 name="quality"
                 value="mid"
                 className={`mid ${styles.mid} ${styles.radio}`}
-                onChange={(e) => setQuality("mid")}
+                onChange={() => setQuality("mid")}
               />
               <input
                 type="radio"
                 name="quality"
                 value="good"
                 className={`good ${styles.good} ${styles.radio}`}
-                onChange={(e) => setQuality("good")}
+                onChange={() => setQuality("good")}
               />
             </div>
             <div className={styles.time_container}>
@@ -130,7 +141,7 @@ const AddLogForm = () => {
                   step="1"
                   className={styles.number}
                   value={hours}
-                  onChange={hourChangeHandler}
+                  onChange={(e) => setHours(+e.target.value)}
                 />
                 hr
               </label>
@@ -142,7 +153,7 @@ const AddLogForm = () => {
                   step="1"
                   className={styles.number}
                   value={minutes}
-                  onChange={minuteChangeHandler}
+                  onChange={(e) => setMinutes(+e.target.value)}
                 />
                 min
               </label>

@@ -1,34 +1,44 @@
 const { Log } = require("../models/practice-logs");
-const { User } = require("../models/user");
 
 module.exports = {
-  getDailyLogs: (req, res) => {
-    console.log("get daily logs");
+  getDailyLogs: async (req, res) => {
+    try { 
+      const { userId } = req.params
+      const logs = await Log.findAll({ where: { userId }})
+
+      res.status(200).send(logs)
+    } catch (error) {
+      console.log("error in getDailyLogs");
+      console.log(error);
+      res.sendStatus(400);
+    }
   },
 
   addLog: async (req, res) => {
     try {
       const {
-        date,
-        quality,
+        parsedDate,
+        sentQuality,
         hours,
         minutes,
-        scales,
-        exercises,
-        repertoire,
-        notes,
+        sentScales,
+        sentExercises,
+        sentRepertoire,
+        sentNotes,
         userId,
       } = req.body;
 
+      console.log(req.body)
+
       await Log.create({
-        date,
-        quality,
+        date: parsedDate,
+        quality: sentQuality,
         time_hr: hours,
         time_min: minutes,
-        scales,
-        exercises,
-        repertoire,
-        notes,
+        scales: sentScales,
+        exercises: sentExercises,
+        repertoire: sentRepertoire,
+        notes: sentNotes,
         userId,
       });
     } catch (error) {
