@@ -41,11 +41,11 @@ const Goals = () => {
         setGoals(res.data);
       })
       .catch((err) => console.log(err));
-  }, [setGoals]);
+  }, [userId, token]);
 
   useEffect(() => {
     getGoals();
-  }, [getGoals]);
+  }, [userId, token, getGoals]);
 
   const mappedGoals = goals.map((goal) => {
     return (
@@ -66,7 +66,7 @@ const Goals = () => {
       <hr />
       <ul>
         {mappedGoals}
-        {addingGoal && <AddGoal onClose={showAddNewGoal} onSave={getGoals}/>}
+        {addingGoal && <AddGoal onClose={showAddNewGoal} onSave={getGoals} />}
       </ul>
     </OuterCard>
   );

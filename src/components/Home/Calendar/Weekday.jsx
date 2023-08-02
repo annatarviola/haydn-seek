@@ -3,7 +3,7 @@ import DateContext from "../../../store/dateContext";
 import styles from "./Weekday.module.css";
 import Details from "./Details";
 
-const Weekday = () => {
+const Weekday = ({ filteredLogs }) => {
   const dateCtx = useContext(DateContext)
 
   const daysOfWeek = [
@@ -22,6 +22,11 @@ const Weekday = () => {
     const date = new Date(selectedWeek);
     date.setDate(selectedWeek.getDate() + index);
 
+    const filteredLogsForDay = filteredLogs.filter((log) => {
+      const logDate = new Date(log.date.split('-'))
+      return logDate.toDateString() === date.toDateString()
+    })
+
     return (
       <div key={day}>
         <div className={styles.weekday_container}>
@@ -35,7 +40,7 @@ const Weekday = () => {
         </div>
         <div className={styles.details_container}>
           <hr className={styles.break} />
-          {/* <Details /> */}
+          {filteredLogsForDay.length > 0 ? <Details filteredLogs={filteredLogsForDay} /> : <p className={styles.empty_details}>No practice logs.</p>}
         </div>
       </div>
     );

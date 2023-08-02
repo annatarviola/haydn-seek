@@ -8,6 +8,7 @@ h4 {
   height: 1.5px;
   width: 80%;
   background-color: var(--light-green);
+  margin: 10px;
 }
 
 .details_container {
@@ -29,4 +30,9 @@ h4 {
   display: flex;
   justify-content: space-between;
   margin-left: 10px;
+}
+
+.empty_details {
+  font-size: 12px;
+  margin: 0;
 }

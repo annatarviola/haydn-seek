@@ -58,11 +58,7 @@ const AddLogForm = () => {
     let sentRepertoire = optionalValues[3];
     let sentNotes = optionalValues[4];
 
-    const parsedDate = new Date(date.split("-")).toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
+    const parsedDate = new Date(date.split('-'));
 
     const body = {
       parsedDate,

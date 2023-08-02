@@ -56,7 +56,8 @@ export const DateProvider = (props) => {
     endOfWeek,
     year,
     prevWeek,
-    nextWeek
+    nextWeek,
+    getEndOfWeek
   }
 
   return (

@@ -9,11 +9,34 @@ const AddGoal = (props) => {
 
   const [value, setValue] = useState("");
 
-  const submitHandler = (e) => {
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+
+  //   axios
+  //     .post(
+  //       `${baseURL}/goals`,
+  //       { value, userId },
+  //       {
+  //         headers: {
+  //           authorization: token,
+  //         },
+  //       }
+  //     )
+  //     .then(() => {
+  //       setValue("");
+  //       props.onSave();
+  //       props.onClose();
+  //       console.log('added goal')
+  //     })
+  //     .catch((err) => console.log(err));
+
+  // };
+
+  const submitHandler = async (e) => {
     e.preventDefault();
 
-    axios
-      .post(
+    try {
+      axios.post(
         `${baseURL}/goals`,
         { value, userId },
         {
@@ -21,12 +44,15 @@ const AddGoal = (props) => {
             authorization: token,
           },
         }
-      )
-      .then(() => {
-        setValue("");
-        props.onSave();
-      })
-      .catch((err) => console.log(err));
+      );
+
+      setValue("");
+      props.onSave();
+      props.onClose();
+      console.log('added goal')
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -43,14 +69,7 @@ const AddGoal = (props) => {
         <button className="outline-btn" onClick={props.onClose}>
           Cancel
         </button>
-        <button
-          className="solid-btn"
-          type="submit"
-          onClick={(e) => {
-            submitHandler(e);
-            props.onClose(e);
-          }}
-        >
+        <button className="solid-btn" type="submit" onClick={submitHandler}>
           Save
         </button>
       </div>
