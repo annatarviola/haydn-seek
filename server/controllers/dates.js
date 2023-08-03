@@ -16,8 +16,8 @@ module.exports = {
 
   addDate: async (req, res) => {
     try {
-      const { description, time, date, userId } = req.body;
-      await Date.create({ description, date, time, userId });
+      const { title, description, time, date, userId } = req.body;
+      await Date.create({ title, description, date, time, userId });
     } catch (error) {
       console.log("error in addDate");
       console.log(error);

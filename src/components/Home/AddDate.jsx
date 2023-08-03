@@ -7,6 +7,7 @@ import { baseURL } from "../../App";
 const AddDate = (props) => {
   const { token, userId } = useContext(AuthContext);
 
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
@@ -17,7 +18,7 @@ const AddDate = (props) => {
     axios
       .post(
         `${baseURL}/importantdates`,
-        { description, date, time, userId },
+        { title, description, date, time, userId },
         {
           headers: {
             authorization: token,
@@ -25,53 +26,63 @@ const AddDate = (props) => {
         }
       )
       .then(() => {
+        setTitle("")
         setDescription("");
         setDate("");
         setTime("");
-        props.onSave()
+        props.onSave();
+        props.onClose()
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    <div className={styles.addNew_container}>
-      <textarea
-        className={styles.addNew_input}
-        rows="2"
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <div className={styles.dateTime_container}>
+    <>
+      <form className={styles.addNew_container} onSubmit={submitHandler}>
         <input
           className={styles.addNew_input}
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+          type="text"
+          placeholder="Event Title"
+          value={title}
+          required={true}
+          onChange={(e) => setTitle(e.target.value)}
         />
-        <input
+        <textarea
           className={styles.addNew_input}
-          type="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
+          rows="2"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
-      </div>
-      <div className={styles.container}>
-        <button className="outline-btn" onClick={props.onClose}>
-          Cancel
-        </button>
-        <button
-          className="solid-btn"
-          type="submit"
-          onClick={(e) => {
-            props.onClose(e);
-            submitHandler(e);
-          }}
-        >
-          Save
-        </button>
-      </div>
-    </div>
+        <div className={styles.dateTime_container}>
+          <input
+            className={styles.addNew_input}
+            type="date"
+            value={date}
+            required={true}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <input
+            className={styles.addNew_input}
+            type="time"
+            value={time}
+            required={true}
+            onChange={(e) => setTime(e.target.value)}
+          />
+        </div>
+        <div className={styles.container}>
+          <button className="outline-btn" onClick={props.onClose}>
+            Cancel
+          </button>
+          <button
+            className="solid-btn"
+            type="submit"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 

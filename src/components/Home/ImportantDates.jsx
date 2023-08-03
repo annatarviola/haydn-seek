@@ -51,7 +51,7 @@ const ImportantDates = () => {
     let formattedDate = new Date(date.date.split("-")).toLocaleDateString(
       "en-us",
       {
-        year: "numeric",
+        // year: "numeric",
         month: "short",
         day: "numeric",
       }
@@ -65,18 +65,21 @@ const ImportantDates = () => {
     let min = time[1];
 
     return (
-      <li key={date.id} >
+      <div key={date.id} className={styles.container}>
+        <div className={styles.details_container}>
+          <span className={styles.date_title}>{date.title}</span>
+          <span className={styles.date_description}>{date.description}</span>
+        </div>
         <div className={styles.container}>
-          <span className={styles.date_title}>{date.description}</span>
-          <span className={styles.date}>
-            {formattedDate},{" "}
+          <span className={styles.date_container}>
+            {formattedDate}
             <span className={styles.time}>
               {hours}:{min} {ampm}
             </span>
-            <span className="material-icons-round edit-btn">edit</span>
           </span>
+          <span className="material-icons-round edit-btn">edit</span>
         </div>
-      </li>
+      </div>
     );
   });
 
@@ -89,10 +92,10 @@ const ImportantDates = () => {
         </button>
       </div>
       <hr />
-      <ul>
+      <div>
         {mappedDates}
-        {addingDate && <AddDate onClose={showAddNewDate} onSave={getDates()}/>}
-      </ul>
+        {addingDate && <AddDate onClose={showAddNewDate} onSave={getDates()} />}
+      </div>
     </OuterCard>
   );
 };
