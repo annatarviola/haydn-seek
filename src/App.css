@@ -48,11 +48,12 @@ button {
   font-size: 16px;
   border-radius: 5px;
   padding: 8px 25px;
+  color: var(--dark-green)
 }
 
 button:hover {
-  transition: 0.3s;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 ul {
@@ -106,9 +107,9 @@ ul {
 }
 
 .edit-btn:hover {
-  color: var(--hover-yellow);
   transition: .3s;
   cursor: pointer;
+  color: var(--hover-yellow);
 }
 
 .input-container {
@@ -122,22 +123,3 @@ ul {
   margin: 5px;
 }
 
-.material-symbols-rounded {
-  font-size: 40px;
-  /* color: white; */
-  top: 8px;
-  left: 43px;
-  position: absolute;
-}
-
-.bad {
-  background-color: #d35e56;
-}
-
-.mid {
-  background-color: #e3bb54;
-}
-
-.good {
-  background-color: #a4d268;
-}

@@ -12,3 +12,20 @@
   letter-spacing: 2px;
 }
 
+.toggle_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggle_btn {
+  margin: 0 5px 0 5px;
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #5a7351
+}
+
+.toggle_btn:hover {
+  color: var(--hover-yellow)
+}
+

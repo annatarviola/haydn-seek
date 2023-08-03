@@ -34,7 +34,6 @@ const HomeScreen = () => {
       })
       .then((res) => {
         setLogs(res.data);
-        console.log("getting logs");
       })
       .catch((err) => console.log(err));
   }, [userId, token]);
@@ -46,10 +45,12 @@ const HomeScreen = () => {
   useEffect(() => {
     const filteredLogs = logs.filter((log) => {
       const logDate = new Date(log.date.split("-"));
-      return logDate >= selectedWeek && logDate < getEndOfWeek(selectedWeek);
+      return logDate >= selectedWeek && logDate <= getEndOfWeek(selectedWeek);
     });
     setFilteredLogs(filteredLogs);
   }, [logs, selectedWeek, getEndOfWeek]);
+
+
 
   return (
     <>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import OuterCard from "../../Layout/OuterCard";
 import InnerCard from "../../Layout/InnerCard";
 import Weekday from "./Weekday";
@@ -11,6 +12,16 @@ const Calendar = ({
   year,
   filteredLogs,
 }) => {
+  const [showAllDetails, setShowAllDetails] = useState(false);
+
+  const toggleShow = () => {
+    setShowAllDetails(true);
+  };
+
+  const toggleHide = () => {
+    setShowAllDetails(false)
+  }
+
   return (
     <OuterCard>
       <h3>Weekly Practice Log</h3>
@@ -27,7 +38,14 @@ const Calendar = ({
         </button>
       </div>
       <InnerCard>
-        <Weekday filteredLogs={filteredLogs} />
+        <div className={styles.toggle_container}>
+          <button className={styles.toggle_btn} onClick={toggleShow}>Show All</button>
+          <button className={styles.toggle_btn} onClick={toggleHide}>Hide All</button>
+        </div>
+        <Weekday
+          filteredLogs={filteredLogs}
+          showAllDetails={showAllDetails}
+        />
       </InnerCard>
     </OuterCard>
   );

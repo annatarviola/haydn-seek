@@ -43,13 +43,9 @@ const Register = () => {
   const errStyle = { color: "#b12a2a", fontSize: "14px" };
 
   const onSubmit = (values) => {
-    console.log(values);
-
     const { firstName, lastName, email, username, password } = values;
 
     const body = { firstName, lastName, email, username, password };
-
-    console.log(body);
 
     axios
       .post(`${baseURL}/register`, body)

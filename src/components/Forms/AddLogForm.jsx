@@ -39,7 +39,7 @@ const AddLogForm = () => {
     let optionalValues = [quality, scales, exercises, repertoire, notes];
 
     for (let i = 0; i < optionalValues.length; i++) {
-      if (optionalValues[i].trim() === "") {
+      if (optionalValues[i].trim() === "" || !optionalValues[i]) {
         optionalValues[i] = "None";
       }
     }
@@ -79,7 +79,6 @@ const AddLogForm = () => {
         },
       })
       .then(
-        console.log(body),
         navigate("/")
       )
       .catch((err) => console.log(err));

@@ -9,9 +9,6 @@ const Counter = ({ filteredLogs }) => {
 
     const totalHours = hoursArr.reduce((acc, cur) => acc + cur, 0) + Math.floor(totalMinutes / 60)
     
-    console.log(totalHours)
-    console.log(totalMinutes)
-
     return(
         <div className={styles.container}>
             <p>THIS WEEK</p>

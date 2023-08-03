@@ -11,17 +11,22 @@
   height: 50px;
   border: none;
   border-radius: 50%;
+  transition: outline 800ms, width 800ms, height 800ms;
+
 }
 
 .bad {
+  background-color: #d35e56;
   outline: none #d35e5683;
 }
 
 .mid {
+  background-color: #e3bb54;
   outline: none #e3bb5483;
 }
 
 .good {
+  background-color: #a4d268;
   outline: none #a4d26883;
 }
 

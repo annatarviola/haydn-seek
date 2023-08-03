@@ -20,8 +20,6 @@ const Auth = () => {
       password,
     };
 
-    console.log(body);
-
     axios
       .post(`${baseURL}/login`, body)
       .then((res) => {

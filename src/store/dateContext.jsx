@@ -5,15 +5,18 @@ const DateContext = createContext();
 export const DateProvider = (props) => {
   const getStartOfWeek = (date) => {
     const day = date.getDay();
-    const diff = date.getDate() - day + (day === 0 ? -6 : 1); // Week starts on Monday
-    return new Date(date.setDate(diff));
+    const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+    const startOfWeekDate = new Date(date.setDate(diff));
+    startOfWeekDate.setHours(0, 0, 0, 0);
+    return startOfWeekDate;
   };
 
   const getEndOfWeek = (date) => {
     const startOfWeek = getStartOfWeek(date);
-    const endOfWeek = new Date(startOfWeek);
-    endOfWeek.setDate(startOfWeek.getDate() + 6);
-    return endOfWeek;
+    const endOfWeekDate = new Date(startOfWeek);
+    endOfWeekDate.setDate(startOfWeek.getDate() + 6);
+    endOfWeekDate.setHours(23, 59, 59, 999);
+    return endOfWeekDate;
   };
 
   const [selectedWeek, setSelectedWeek] = useState(getStartOfWeek(new Date()));
@@ -43,7 +46,7 @@ export const DateProvider = (props) => {
     day: "numeric",
   });
 
-  const endOfWeek = getEndOfWeek(selectedWeek, 6).toLocaleString("en-us", {
+  const endOfWeek = getEndOfWeek(selectedWeek).toLocaleString("en-us", {
     month: "short",
     day: "numeric",
   });
@@ -57,14 +60,14 @@ export const DateProvider = (props) => {
     year,
     prevWeek,
     nextWeek,
-    getEndOfWeek
-  }
+    getEndOfWeek,
+  };
 
   return (
     <DateContext.Provider value={contextValue}>
-        {props.children}
+      {props.children}
     </DateContext.Provider>
-  )
+  );
 };
 
-export default DateContext
+export default DateContext;
