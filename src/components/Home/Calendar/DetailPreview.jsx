@@ -1,6 +1,7 @@
-import styles from "./Details.module.css";
+import { useState } from "react";
+import styles from "./DetailPreview.module.css";
 
-const Details = ({ filteredLogs }) => {
+const DetailPreview = ({ filteredLogs }) => {
   return (
     <>
       {filteredLogs.map((log) => (
@@ -14,7 +15,7 @@ const Details = ({ filteredLogs }) => {
             <p className={styles.repertoire}>{log.repertoire}</p>
           </div>
           <button className={styles.view_btn}>
-            <span className="material-icons-round">unfold_more</span>
+            <span className="material-icons-round">visibility</span>
           </button>
         </div>
       ))}
@@ -22,4 +23,4 @@ const Details = ({ filteredLogs }) => {
   );
 };
 
-export default Details;
+export default DetailPreview;

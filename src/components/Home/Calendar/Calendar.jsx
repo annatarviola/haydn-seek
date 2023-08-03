@@ -13,14 +13,19 @@ const Calendar = ({
   filteredLogs,
 }) => {
   const [showAllDetails, setShowAllDetails] = useState(false);
+  const [toggleFlag, setToggleFlag] = useState(false)
 
   const toggleShow = () => {
     setShowAllDetails(true);
+    setToggleFlag(!toggleFlag)
+    console.log(toggleFlag)
   };
 
   const toggleHide = () => {
-    setShowAllDetails(false)
-  }
+    setShowAllDetails(false);
+    setToggleFlag(!toggleFlag)
+    console.log(toggleFlag)
+  };
 
   return (
     <OuterCard>
@@ -39,12 +44,17 @@ const Calendar = ({
       </div>
       <InnerCard>
         <div className={styles.toggle_container}>
-          <button className={styles.toggle_btn} onClick={toggleShow}>Show All</button>
-          <button className={styles.toggle_btn} onClick={toggleHide}>Hide All</button>
+          <button className={styles.toggle_btn} onClick={toggleShow}>
+            Show All
+          </button>
+          <button className={styles.toggle_btn} onClick={toggleHide}>
+            Hide All
+          </button>
         </div>
         <Weekday
           filteredLogs={filteredLogs}
           showAllDetails={showAllDetails}
+          toggleFlag={toggleFlag}
         />
       </InnerCard>
     </OuterCard>

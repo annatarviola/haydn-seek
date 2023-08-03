@@ -1,9 +1,9 @@
 import { useContext, useState, useEffect } from "react";
 import DateContext from "../../../store/dateContext";
 import styles from "./Weekday.module.css";
-import Details from "./Details";
+import DetailPreview from "./DetailPreview";
 
-const Weekday = ({ filteredLogs, showAllDetails }) => {
+const Weekday = ({ filteredLogs, showAllDetails, toggleFlag }) => {
   const dateCtx = useContext(DateContext);
 
   const daysOfWeek = [
@@ -16,20 +16,27 @@ const Weekday = ({ filteredLogs, showAllDetails }) => {
     "Sunday",
   ];
 
-  const [detailView, setDetailView] = useState(Array(daysOfWeek.length).fill(false));
+  const [detailView, setDetailView] = useState(
+    Array(daysOfWeek.length).fill(false)
+  );
 
   const rightArrow = "arrow_right";
   const dropdownArrow = "arrow_drop_down";
 
-  const toggleDetails = (i) => {
-    const updatedDetailView = [...detailView]
-    updatedDetailView[i] = !updatedDetailView[i]
+  const toggleDetailPreview = (i) => {
+    const updatedDetailView = [...detailView];
+    updatedDetailView[i] = !updatedDetailView[i];
     setDetailView(updatedDetailView);
   };
 
   useEffect(() => {
-    setDetailView(showAllDetails ? Array(daysOfWeek.length).fill(true) : Array(daysOfWeek.length).fill(false));
-  }, [showAllDetails]);
+    if (toggleFlag || !toggleFlag)
+      setDetailView(
+        showAllDetails
+          ? Array(daysOfWeek.length).fill(true)
+          : Array(daysOfWeek.length).fill(false)
+      );
+  }, [showAllDetails, toggleFlag]);
 
   const selectedWeek = new Date(dateCtx.selectedWeek);
 
@@ -48,7 +55,11 @@ const Weekday = ({ filteredLogs, showAllDetails }) => {
           <h4>{day}</h4>
           <div className={styles.date_container}>
             <p>{date.toLocaleDateString()}</p>
-            <button type="button" className="icon-btn" onClick={() => toggleDetails(index)}>
+            <button
+              type="button"
+              className="icon-btn"
+              onClick={() => toggleDetailPreview(index)}
+            >
               <span className="material-icons-round">
                 {!detailView[index] ? rightArrow : dropdownArrow}
               </span>
@@ -60,7 +71,7 @@ const Weekday = ({ filteredLogs, showAllDetails }) => {
           {detailView[index] && (
             <>
               {filteredLogsForDay.length > 0 ? (
-                <Details filteredLogs={filteredLogsForDay} />
+                <DetailPreview filteredLogs={filteredLogsForDay} />
               ) : (
                 <p className={styles.empty_details}>No practice logs.</p>
               )}

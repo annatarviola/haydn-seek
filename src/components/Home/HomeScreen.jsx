@@ -50,24 +50,22 @@ const HomeScreen = () => {
     setFilteredLogs(filteredLogs);
   }, [logs, selectedWeek, getEndOfWeek]);
 
-
-
   return (
-    <>
-      <Calendar
-        prevWeek={prevWeek}
-        nextWeek={nextWeek}
-        startOfWeek={startOfWeek}
-        endOfWeek={endOfWeek}
-        year={year}
-        filteredLogs={filteredLogs}
-      />
+    <div className={styles.main_display}>
+        <Calendar
+          prevWeek={prevWeek}
+          nextWeek={nextWeek}
+          startOfWeek={startOfWeek}
+          endOfWeek={endOfWeek}
+          year={year}
+          filteredLogs={filteredLogs}
+        />
       <div className={styles.container}>
-        <Counter filteredLogs={filteredLogs}/>
+        <Counter filteredLogs={filteredLogs} />
         <ImportantDates />
         <Goals />
       </div>
-    </>
+    </div>
   );
 };
 
