@@ -68,8 +68,14 @@ ul {
 }
 
 .solid-btn:hover {
+  transition: .3s;
   color: var(--hover-yellow);
   background-color: var(--mid-green);
+}
+
+.solid-btn:disabled {
+  background-color: var(--disabled-gray);
+  color: white;
 }
 
 .outline-btn {
@@ -79,8 +85,14 @@ ul {
 }
 
 .outline-btn:hover {
+  transition: .3s;
   border-color: var(--hover-yellow);
   color: var(--hover-yellow);
+}
+
+.outline-btn:disabled {
+  border-color: var(--disabled-gray);
+  color: var(--disabled-gray);
 }
 
 .icon-btn {
@@ -93,6 +105,7 @@ ul {
 }
 
 .icon-btn:hover {
+  transition: .3s;
   color: var(--hover-yellow);
 }
 

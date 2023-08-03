@@ -77,7 +77,7 @@ const ImportantDates = () => {
               {hours}:{min} {ampm}
             </span>
           </span>
-          <span className="material-icons-round edit-btn">edit</span>
+          {/* <span className="material-icons-round edit-btn">edit</span> */}
         </div>
       </div>
     );

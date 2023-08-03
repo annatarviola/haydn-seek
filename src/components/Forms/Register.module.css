@@ -4,3 +4,12 @@
     justify-content: space-between;
     align-items: baseline;
 }
+
+.submitting, .error {
+    margin-top: 15px;
+}
+
+.error {
+    color: rgb(185, 39, 39);
+    font-size: 14px;
+}

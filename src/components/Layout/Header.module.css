@@ -27,5 +27,6 @@ h1 {
 }
 
 .nav_btn:hover {
+  transition: .3s;
   color: var(--hover-yellow);
 }

@@ -21,6 +21,7 @@
   cursor: pointer;
   color: #8b948b;
   text-decoration: line-through;
+  transition: .3s;
 }
 
 .details_container {
@@ -43,6 +44,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 15px;
   padding: 10px;
   width: 65px;
   font-size: 15px;
@@ -51,8 +53,14 @@
   border-radius: 5px;
   background-color: white;
   box-shadow: 4px 4px 4px 0px rgba(206, 206, 206, 0.4);
+  transition: .3s;
 }
 
+.date_container:hover {
+    cursor: pointer;
+    background-color: #f1de9d;
+    transition: .3s;
+}
 
 .time {
   margin-left: 4px;
