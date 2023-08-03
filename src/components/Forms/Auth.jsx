@@ -10,7 +10,7 @@ import { baseURL } from "../../App";
 const Auth = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [submitting, setSubmitting] = useState("")
+  const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
 
   const authCtx = useContext(AuthContext);
@@ -34,9 +34,9 @@ const Auth = () => {
         setSubmitting(false)
       })
       .catch((err) => {
+        console.log(err);
         setError(true)
         setSubmitting(false)
-        console.log(err);
         setUsername("");
         setPassword("");
       });

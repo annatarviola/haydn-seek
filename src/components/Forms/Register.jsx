@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -11,6 +11,9 @@ import { baseURL } from "../../App";
 
 const Register = () => {
   const authCtx = useContext(AuthContext);
+
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(false)
 
   const initialValues = {
     firstName: "",
@@ -43,6 +46,8 @@ const Register = () => {
   const errStyle = { color: "#b12a2a", fontSize: "14px" };
 
   const onSubmit = (values) => {
+    setSubmitting(true)
+
     const { firstName, lastName, email, username, password } = values;
 
     const body = { firstName, lastName, email, username, password };
@@ -51,9 +56,14 @@ const Register = () => {
       .post(`${baseURL}/register`, body)
       .then((res) => {
         console.log("AFTER REGISTRATION", res.data);
+        setError(false)
+        setSubmitting(false)
         authCtx.login(res.data.token, res.data.exp, res.data.userId);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setSubmitting(false);
+        setError(true)
+        console.log(err)});
   };
 
   return (
@@ -137,12 +147,19 @@ const Register = () => {
                 </div>
               </div>
               <Field name="passwordConfirmation" type="password" />
+            {submitting && (
+              <span className={styles.submitting}>Submitting...</span>
+            )}
+            {error && <span className={styles.error}>Username or email already exists.</span>}
             </div>
 
+
             <Link to="/login">
-              <button className="outline-btn">Need to Login?</button>
+              <button type="button" className="outline-btn" disabled={submitting}>
+                Need to Login?
+              </button>
             </Link>
-            <button type="submit" className="solid-btn">
+            <button type="submit" className="solid-btn" disabled={submitting}>
               Sign Up
             </button>
           </Form>

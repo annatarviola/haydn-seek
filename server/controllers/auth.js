@@ -16,7 +16,7 @@ module.exports = {
     try {
       const { firstName, lastName, email, username, password } = req.body;
 
-      let foundUser = await User.findOne({ where: { username } });
+      let foundUser = await User.findOne({ where: { username } || { email } });
 
       if (foundUser) {
         res.status(400).send("User already exists");
@@ -63,7 +63,7 @@ module.exports = {
         const isAuthenticated = bcrypt.compareSync(
           password,
           foundUser.hashedPass
-        )
+        );
 
         if (isAuthenticated) {
           const token = createToken(
@@ -76,13 +76,14 @@ module.exports = {
           res.status(200).send({
             username: foundUser.dataValues.username,
             userId: foundUser.dataValues.id,
-            token, exp
-          })
+            token,
+            exp,
+          });
         } else {
-          res.status(401).send('Unable to authenticate.')
+          res.status(401).send("Unable to authenticate.");
         }
       } else {
-        res.status(401).send('Unable to login.')
+        res.status(401).send("Unable to login.");
       }
     } catch (err) {
       res.sendStatus(400);
