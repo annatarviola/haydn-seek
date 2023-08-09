@@ -17,19 +17,6 @@ const Goals = () => {
     setAddingGoal(!addingGoal);
   };
 
-  const deleteGoal = (id) => {
-    axios
-      .delete(`${baseURL}/goals/${id}`, {
-        headers: {
-          authentication: token,
-        },
-      })
-      .then(() => {
-        getGoals();
-      })
-      .catch((err) => console.log(err));
-  };
-
   const getGoals = useCallback(() => {
     axios
       .get(`${baseURL}/goals/${userId}`, {
@@ -46,6 +33,19 @@ const Goals = () => {
   useEffect(() => {
     getGoals();
   }, [userId, token, getGoals]);
+
+  const deleteGoal = (id) => {
+    axios
+      .delete(`${baseURL}/goals/${id}`, {
+        headers: {
+          authentication: token,
+        },
+      })
+      .then(() => {
+        getGoals();
+      })
+      .catch((err) => console.log(err));
+  };
 
   const mappedGoals = goals.map((goal) => {
     return (

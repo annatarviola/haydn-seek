@@ -47,6 +47,8 @@ const ImportantDates = () => {
     getDates();
   }, [getDates]);
 
+  //** SET UP TO SORT BY DATES 
+
   const mappedDates = dates.map((date) => {
     let formattedDate = new Date(date.date.split("-")).toLocaleDateString(
       "en-us",

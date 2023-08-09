@@ -26,12 +26,12 @@ const AddDate = (props) => {
         }
       )
       .then(() => {
-        setTitle("")
+        setTitle("");
         setDescription("");
         setDate("");
         setTime("");
         props.onSave();
-        props.onClose()
+        props.onClose();
       })
       .catch((err) => console.log(err));
   };
@@ -74,10 +74,7 @@ const AddDate = (props) => {
           <button className="outline-btn" onClick={props.onClose}>
             Cancel
           </button>
-          <button
-            className="solid-btn"
-            type="submit"
-          >
+          <button className="solid-btn" type="submit">
             Save
           </button>
         </div>

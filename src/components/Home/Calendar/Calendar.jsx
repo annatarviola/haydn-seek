@@ -18,13 +18,11 @@ const Calendar = ({
   const toggleShow = () => {
     setShowAllDetails(true);
     setToggleFlag(!toggleFlag)
-    console.log(toggleFlag)
   };
 
   const toggleHide = () => {
     setShowAllDetails(false);
     setToggleFlag(!toggleFlag)
-    console.log(toggleFlag)
   };
 
   return (

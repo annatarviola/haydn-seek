@@ -51,16 +51,15 @@ const Weekday = ({ filteredLogs, showAllDetails, toggleFlag }) => {
 
     return (
       <div key={day}>
-        <div className={styles.weekday_container}>
+        <div
+          className={styles.weekday_container}
+          onClick={() => toggleDetailPreview(index)}
+        >
           <h4>{day}</h4>
           <div className={styles.date_container}>
             <p>{date.toLocaleDateString()}</p>
-            <button
-              type="button"
-              className="icon-btn"
-              onClick={() => toggleDetailPreview(index)}
-            >
-              <span className="material-icons-round">
+            <button type="button" className="icon-btn">
+              <span className="icon-btn material-icons-round">
                 {!detailView[index] ? rightArrow : dropdownArrow}
               </span>
             </button>

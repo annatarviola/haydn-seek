@@ -45,11 +45,11 @@ const AddGoal = (props) => {
           },
         }
       );
-
+        
       setValue("");
       props.onSave();
       props.onClose();
-      console.log('added goal')
+      console.log("added goal");
     } catch (error) {
       console.log(error);
     }
