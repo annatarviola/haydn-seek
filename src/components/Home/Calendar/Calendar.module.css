@@ -26,7 +26,7 @@
 }
 
 .toggle_btn:hover {
-  transition: .3s;
+  transition: 200ms;
   color: var(--hover-yellow)
 }
 

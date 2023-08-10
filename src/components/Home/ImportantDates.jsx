@@ -17,6 +17,29 @@ const ImportantDates = () => {
     setAddingDate(!addingDate);
   };
 
+  const getDates = useCallback(() => {
+    axios
+      .get(`${baseURL}/importantdates/${userId}`, {
+        headers: {
+          authentication: token,
+        },
+      })
+      .then((res) => {
+        const data = res.data;
+        const sortedData = data.sort((a, b) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateA.getTime() - dateB.getTime();
+        });
+        setDates(sortedData);
+      })
+      .catch((err) => console.log(err));
+  }, [userId, token]);
+
+  useEffect(() => {
+    getDates();
+  }, [userId, token, getDates]);
+
   const deleteDate = (id) => {
     axios
       .delete(`${baseURL}/importantdates/${id}`, {
@@ -29,25 +52,6 @@ const ImportantDates = () => {
       })
       .catch((err) => console.log(err));
   };
-
-  const getDates = useCallback(() => {
-    axios
-      .get(`${baseURL}/importantdates/${userId}`, {
-        headers: {
-          authentication: token,
-        },
-      })
-      .then((res) => {
-        setDates(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, [setDates]);
-
-  useEffect(() => {
-    getDates();
-  }, [getDates]);
-
-  //** SET UP TO SORT BY DATES 
 
   const mappedDates = dates.map((date) => {
     let formattedDate = new Date(date.date.split("-")).toLocaleDateString(
@@ -79,7 +83,6 @@ const ImportantDates = () => {
               {hours}:{min} {ampm}
             </span>
           </span>
-          {/* <span className="material-icons-round edit-btn">edit</span> */}
         </div>
       </div>
     );

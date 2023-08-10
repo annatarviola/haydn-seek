@@ -48,12 +48,13 @@ button {
   font-size: 16px;
   border-radius: 5px;
   padding: 8px 25px;
-  color: var(--dark-green)
+  color: var(--dark-green);
+  transition: 0200ms;
 }
 
 button:hover {
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0200ms;
 }
 
 ul {
@@ -65,10 +66,11 @@ ul {
   border: none;
   background-color: #8eb680;
   color: white;
+  transition: 200ms;
 }
 
 .solid-btn:hover {
-  transition: .3s;
+  transition: 200ms;
   color: var(--hover-yellow);
   background-color: var(--mid-green);
 }
@@ -82,10 +84,11 @@ ul {
   border: 1px solid #8eb680;
   color: #8eb680;
   background-color: white;
+  transition: 200ms;
 }
 
 .outline-btn:hover {
-  transition: .3s;
+  transition: 200ms;
   border-color: var(--hover-yellow);
   color: var(--hover-yellow);
 }
@@ -102,10 +105,11 @@ ul {
   border: none;
   background: none;
   color: var(--dark-green);
+  transition: 200ms;
 }
 
 .icon-btn:hover {
-  transition: .3s;
+  transition: 200ms;
   color: var(--hover-yellow);
 }
 
@@ -117,10 +121,11 @@ ul {
   margin-left: 20px;
   color: rgb(168, 182, 168);
   font-family: "Material Icons";
+  transition: 200ms;
 }
 
 .edit-btn:hover {
-  transition: .3s;
+  transition: 200ms;
   cursor: pointer;
   color: var(--hover-yellow);
 }

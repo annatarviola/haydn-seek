@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import DateContext from "../../../store/dateContext";
 import styles from "./Weekday.module.css";
-import DetailPreview from "./DetailPreview";
+import Details from "./Details";
 
 const Weekday = ({ filteredLogs, showAllDetails, toggleFlag }) => {
   const dateCtx = useContext(DateContext);
@@ -23,7 +23,7 @@ const Weekday = ({ filteredLogs, showAllDetails, toggleFlag }) => {
   const rightArrow = "arrow_right";
   const dropdownArrow = "arrow_drop_down";
 
-  const toggleDetailPreview = (i) => {
+  const toggleDetails = (i) => {
     const updatedDetailView = [...detailView];
     updatedDetailView[i] = !updatedDetailView[i];
     setDetailView(updatedDetailView);
@@ -53,7 +53,7 @@ const Weekday = ({ filteredLogs, showAllDetails, toggleFlag }) => {
       <div key={day}>
         <div
           className={styles.weekday_container}
-          onClick={() => toggleDetailPreview(index)}
+          onClick={() => toggleDetails(index)}
         >
           <h4>{day}</h4>
           <div className={styles.date_container}>
@@ -67,10 +67,10 @@ const Weekday = ({ filteredLogs, showAllDetails, toggleFlag }) => {
         </div>
         <div className={styles.details_container}>
           <hr className={styles.break} />
-          {detailView[index] && (
+          {!detailView[index] && (
             <>
               {filteredLogsForDay.length > 0 ? (
-                <DetailPreview filteredLogs={filteredLogsForDay} />
+                <Details filteredLogs={filteredLogsForDay} />
               ) : (
                 <p className={styles.empty_details}>No practice logs.</p>
               )}

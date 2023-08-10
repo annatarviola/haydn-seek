@@ -24,9 +24,10 @@ h1 {
   background: none;
   border: none;
   color: white;
+  transition: 200ms;
 }
 
 .nav_btn:hover {
-  transition: .3s;
+  transition: 200ms;
   color: var(--hover-yellow);
 }

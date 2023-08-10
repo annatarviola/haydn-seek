@@ -1,0 +1,179 @@
+p {
+  margin: 0;
+}
+
+.good {
+  background-color: #bbddaf;
+}
+
+.goodShadow {
+  box-shadow: 0px 0px 8px 3px #bbddaf88;
+  transition: 100ms;
+}
+
+.mid {
+  background-color: #eadaa3;
+}
+
+.midShadow {
+  box-shadow: 0px 0px 8px 3px #eadaa388;
+  transition: 100ms;
+}
+
+.bad {
+  background-color: #ddb2af;
+}
+
+.badShadow {
+  box-shadow: 0px 0px 8px 3px #ddb2af88;
+  transition: 100ms;
+}
+
+.None {
+  background-color: #cfcfcf;
+}
+
+.NoneShadow {
+  box-shadow: 0px 0px 10px 3px #cfcfcf88;
+  transition: 200ms;
+}
+
+.logBanner {
+  margin: 3px 0px 3px 0px;
+  width: 80%;
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  padding: 3px 0px 3px 0px;
+  font-size: 14px;
+}
+
+.previewContainer {
+  display: flex;
+  gap: 4px;
+}
+
+.full {
+  margin: 5px 0px 10px 0px;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.expandedBanner {
+  margin: 0;
+  width: 100%;
+  height: auto;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.contentContainer {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+  padding: 20px;
+  border-radius: 0px 0px 5px 5px;
+  height: auto;
+}
+
+.quality {
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+.truncate {
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.detailHeading {
+  font-weight: 500;
+  font-size: 20px;
+  margin: 0;
+}
+
+.lineBreak {
+  height: 1.5px;
+  margin: 0px 0px 7px 30px;
+  width: 40%;
+  background-color: #dce3d9;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.content {
+  width: auto;
+  word-wrap: break-word;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: left;
+}
+
+.rightContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.time {
+  font-family: "Bellota Text", cursive;
+  font-weight: 400;
+  align-self: center;
+}
+
+.notes {
+  margin-left: 20px;
+  align-self: left;
+}
+
+.scales {
+  padding-left: 10px;
+  max-width: 50px;
+}
+
+.exercises {
+  max-width: 80px;
+}
+
+.repertoire {
+  max-width: 100px;
+}
+
+.viewBtn {
+  margin: 0;
+  padding: 10px;
+  font-family: "Material Icons";
+  font-size: 16px;
+  border: none;
+  background: none;
+  color: #617261;
+  transition: 200ms;
+}
+
+.viewBtn:hover {
+  color: var(--hover-yellow);
+  transition: 200ms;
+}
+
+.editBtn {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 14px;
+  align-self: flex-end;
+  color: var(--mid-green);
+  transition: 200ms;
+}
+
+.editBtn:hover {
+  color: var(--hover-yellow);
+  transition: 200ms;
+}
