@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import ImportantDates from "./ImportantDates";
+import ImportantDates from "./ImportantDates/ImportantDates";
 import AuthContext from "../../store/authContext";
 import DateContext from "../../store/dateContext";
 import GetLogsContext from "../../store/getLogsContext";

@@ -81,7 +81,7 @@ module.exports = {
 
       res.sendStatus(200);
     } catch (error) {
-      console.log("error in updateLog");
+      console.log("error in editLog");
       console.log(error);
       res.sendStatus(400);
     }

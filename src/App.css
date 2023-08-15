@@ -71,8 +71,7 @@ ul {
 
 .solid-btn:hover {
   transition: 200ms;
-  color: var(--hover-yellow);
-  background-color: var(--mid-green);
+  background-color: #6a8a5f;
 }
 
 .solid-btn:disabled {

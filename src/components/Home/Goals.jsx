@@ -60,7 +60,7 @@ const Goals = () => {
       <div className={styles.header}>
         <h3>Goals</h3>
         <button type="button" className="icon-btn" onClick={showAddNewGoal}>
-          add_circle_outline
+        {!addingGoal ? 'add_circle_outline' : null}
         </button>
       </div>
       <hr />

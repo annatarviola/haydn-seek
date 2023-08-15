@@ -28,19 +28,35 @@ module.exports = {
     }
   },
 
-  editDate: (req, res) => {
-    console.log("edit date");
+  editDate: async (req, res) => {
+    try {
+      const { id } = req.params
+      const { title, description, date, time} = req.body
+
+      await Date.update(
+        { title, description, date, time }, { where: { id: +id }}
+      )
+
+      res.sendStatus(200)
+    } catch (error) {
+      console.log("error in editDate");
+      console.log(error);
+      res.sendStatus(400);
+    }
   },
 
   deleteDate: async (req, res) => {
-    try {
-      const { id } = req.params
-      await Date.destroy({ where: { id: +id }})
-      res.status(200)
-    } catch (error) {
-      console.log('error in deleteDate')
-      console.log(error)
-      res.sendStatus(400)
-    }
+    console.log('deletedDate ran')
+    // try {
+    //   const { id } = req.params
+    //   await Date.destroy({ where: { id: +id }})
+
+    //   res.status(200)
+
+    // } catch (error) {
+    //   console.log('error in deleteDate')
+    //   console.log(error)
+    //   res.sendStatus(400)
+    // }
   },
 };
