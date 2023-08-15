@@ -1,6 +1,14 @@
+import { useState } from "react";
 import styles from "../Details.module.css";
+import Modal from "../../../Layout/Modal";
+import LogForm from "../../../Forms/LogForm";
 
 const FullLog = ({ log, index, toggleView }) => {
+  const [editMode, setEditMode] = useState(false)
+
+  const toggleEditMode = () => {
+    setEditMode(!editMode)
+  }
     
   const practiceQuality = (quality) => {
     if (quality === "good") {
@@ -32,7 +40,7 @@ const FullLog = ({ log, index, toggleView }) => {
             {log.time_hr} hr {log.time_min} min
           </p>
           <button className={styles.viewBtn} onClick={() => toggleView(index)}>
-            <span className="material-icons-round">unfold_less</span>
+            unfold_less
           </button>
         </div>
       </div>
@@ -56,8 +64,9 @@ const FullLog = ({ log, index, toggleView }) => {
 
         <p className={styles.title}>Practice Notes:</p>
         <p className={`${styles.content} ${styles.notes}`}>{log.notes}</p>
-        <button className={styles.editBtn}>Edit</button>
+        <button className={styles.editBtn} onClick={toggleEditMode}>Edit</button>
       </div>
+      {editMode ? <Modal><LogForm editMode={editMode} log={log} onClose={toggleEditMode}/></Modal> : null}
     </div>
   );
 };

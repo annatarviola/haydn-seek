@@ -93,13 +93,13 @@ const ImportantDates = () => {
       <div className={styles.header}>
         <h3>Important Dates</h3>
         <button type="button" className="icon-btn" onClick={showAddNewDate}>
-          <span className="material-icons-round">add_circle_outline</span>
+          add_circle_outline
         </button>
       </div>
       <hr />
       <div>
         {mappedDates}
-        {addingDate && <AddDate onClose={showAddNewDate} onSave={getDates()} />}
+        {addingDate && <AddDate onClose={showAddNewDate} onSave={getDates} />}
       </div>
     </OuterCard>
   );

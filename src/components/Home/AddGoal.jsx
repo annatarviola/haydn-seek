@@ -9,34 +9,11 @@ const AddGoal = (props) => {
 
   const [value, setValue] = useState("");
 
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-
-  //   axios
-  //     .post(
-  //       `${baseURL}/goals`,
-  //       { value, userId },
-  //       {
-  //         headers: {
-  //           authorization: token,
-  //         },
-  //       }
-  //     )
-  //     .then(() => {
-  //       setValue("");
-  //       props.onSave();
-  //       props.onClose();
-  //       console.log('added goal')
-  //     })
-  //     .catch((err) => console.log(err));
-
-  // };
-
-  const submitHandler = async (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
 
-    try {
-      axios.post(
+    axios
+      .post(
         `${baseURL}/goals`,
         { value, userId },
         {
@@ -44,15 +21,14 @@ const AddGoal = (props) => {
             authorization: token,
           },
         }
-      );
-        
-      setValue("");
-      props.onSave();
-      props.onClose();
-      console.log("added goal");
-    } catch (error) {
-      console.log(error);
-    }
+      )
+      .then(() => {
+        setValue("");
+        props.onSave();
+        props.onClose();
+        console.log("added goal");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

@@ -30,3 +30,6 @@
   color: var(--hover-yellow)
 }
 
+.outer {
+  min-width: 500px;
+}

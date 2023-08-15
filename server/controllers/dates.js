@@ -18,6 +18,9 @@ module.exports = {
     try {
       const { title, description, time, date, userId } = req.body;
       await Date.create({ title, description, date, time, userId });
+
+      res.sendStatus(201)
+
     } catch (error) {
       console.log("error in addDate");
       console.log(error);

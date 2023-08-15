@@ -26,21 +26,21 @@ const Calendar = ({
   };
 
   return (
-    <OuterCard>
+    <OuterCard className={styles.outer}>
       <h3>Weekly Practice Log</h3>
       <hr />
       <div className={styles.nav}>
         <button type="button" className="icon-btn" onClick={prevWeek}>
-          <span className="material-icons-round">arrow_left</span>
+          arrow_left
         </button>
         <h5 className={styles.date_range}>
           {startOfWeek} - {endOfWeek}, {year}
         </h5>
         <button type="button" className="icon-btn" onClick={nextWeek}>
-          <span className="material-icons-round">arrow_right</span>
+          arrow_right
         </button>
       </div>
-      <InnerCard>
+      <InnerCard >
         <div className={styles.toggle_container}>
           <button className={styles.toggle_btn} onClick={toggleShow}>
             Show All

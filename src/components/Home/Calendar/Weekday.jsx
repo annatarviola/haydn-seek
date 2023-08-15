@@ -59,7 +59,7 @@ const Weekday = ({ filteredLogs, showAllDetails, toggleFlag }) => {
           <div className={styles.date_container}>
             <p>{date.toLocaleDateString()}</p>
             <button type="button" className="icon-btn">
-              <span className="icon-btn material-icons-round">
+              <span className="icon-btn">
                 {!detailView[index] ? rightArrow : dropdownArrow}
               </span>
             </button>
@@ -67,7 +67,7 @@ const Weekday = ({ filteredLogs, showAllDetails, toggleFlag }) => {
         </div>
         <div className={styles.details_container}>
           <hr className={styles.break} />
-          {!detailView[index] && (
+          {detailView[index] && (
             <>
               {filteredLogsForDay.length > 0 ? (
                 <Details filteredLogs={filteredLogsForDay} />

@@ -1,0 +1,51 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.time_container {
+  display: flex;
+}
+
+.number {
+  font-size: 16px;
+  width: 60px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.number::-webkit-outer-spin-button,
+.number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete_btn {
+  color: #ffffff;
+  background-color: #cf5454;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+.delete_btn:hover {
+  color: #ffffff;
+  background-color: #812b2b;
+}
+
+.submitting {
+  display: flex;
+  align-self: center;
+}
+
+.outer {
+  min-width: 550px;
+}

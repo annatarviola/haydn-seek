@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styles from "./Details.module.css";
 import FullLog from "./DetailView/FullLog";
 import PreviewLog from "./DetailView/PreviewLog";
 
@@ -12,7 +11,6 @@ const Details = ({ filteredLogs }) => {
     const updatedViewState = [...viewMore];
     updatedViewState[i] = !updatedViewState[i];
     setViewMore(updatedViewState);
-    console.log(viewMore);
   };
 
   return (

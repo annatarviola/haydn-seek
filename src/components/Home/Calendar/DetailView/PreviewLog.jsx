@@ -16,7 +16,7 @@ const PreviewLog = ({ log, index, toggleView }) => (
         {log.time_hr} hr {log.time_min} min
       </p>
       <button className={styles.viewBtn} onClick={() => toggleView(index)}>
-        <span className="material-icons-round">unfold_more</span>
+        unfold_more
       </button>
     </div>
   </div>

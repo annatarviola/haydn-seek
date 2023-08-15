@@ -18,6 +18,9 @@ module.exports = {
     try {
       const { value, userId } = req.body;
       await Goal.create({ value, userId });
+
+      res.sendStatus(201)
+      
     } catch (error) {
       console.log("error in addGoal");
       console.log(error);
