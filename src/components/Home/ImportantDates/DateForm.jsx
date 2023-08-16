@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-import styles from "../Dates&Goals.module.css";
+import styles from "./Dates.module.css";
 import AuthContext from "../../../store/authContext";
 import DateFormButtons from "./DateFormButtons";
 import { baseURL } from "../../../App";
@@ -75,10 +75,10 @@ const DateForm = ({
       {editMode ? (
         <h3 className={styles.form_header}>Edit Date</h3>
       ) : (
-        <h3 className={styles.form_header}>Add Date</h3>
+        <h3 className={styles.form_header}>Add New</h3>
       )}
-      <hr className={styles.hr} />
-      <form className={styles.addNew_container} onSubmit={submitHandler}>
+      <hr className={styles.line} />
+      <form className={styles.form} onSubmit={submitHandler}>
         <input
           className={styles.input}
           type="text"
@@ -94,7 +94,7 @@ const DateForm = ({
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <div className={styles.dateTime_container}>
+        <div className={styles.dateInput_container}>
           <input
             className={styles.input}
             type="date"

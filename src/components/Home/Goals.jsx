@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import axios from "axios";
 import AuthContext from "../../store/authContext";
-import styles from "./Dates&Goals.module.css";
+import styles from "./Goals.module.css";
 import CardHeader from "../UI/CardHeader";
 import OuterCard from "../Layout/OuterCard";
 import AddGoal from "./AddGoal";
@@ -50,7 +50,7 @@ const Goals = () => {
   const mappedGoals = goals.map((goal) => {
     return (
       <li key={goal.id} onClick={() => deleteGoal(goal.id)}>
-        <span className={styles.goal_title}>{goal.value}</span>
+        <span className={styles.title}>{goal.value}</span>
       </li>
     );
   });
@@ -62,7 +62,7 @@ const Goals = () => {
         onClick={showAddNewGoal}
         condition={!addingGoal}
       />
-      <ul className={styles.ul}>{mappedGoals}</ul>
+      <ul className={styles.list}>{mappedGoals}</ul>
       {addingGoal && <AddGoal onClose={showAddNewGoal} onSave={getGoals} />}
     </OuterCard>
   );

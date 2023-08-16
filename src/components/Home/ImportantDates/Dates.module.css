@@ -1,41 +1,21 @@
-.header {
+.item_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 -15px 0 -15px;
-}
-
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 5px;
-}
-
-.goal_title {
-  font-size: 16px;
-  margin-left: 10px;
-}
-
-.goal_title:hover {
-  cursor: pointer;
-  color: #8b948b;
-  text-decoration: line-through;
-  transition: 200ms;
+  margin-bottom: 10px;
 }
 
 .details_container {
-  /* margin-left: 10px; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.date_title {
+.title {
   font-size: 20px;
 }
 
-.date_description {
+.description {
     font-size: 14px;
 }
 
@@ -66,25 +46,69 @@
   font-weight: 400;
 }
 
-.addNew_container {
+.form {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+.form_header {
+  font-style: italic;
+  display: flex;
+  align-self: left;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.line {
+  margin: 0px 0px -10px 40px;
+  width: 25%;
+  background-color: #b8ceb8;
+}
+
 .input {
+  margin: 0;
+  display: flex;
+  align-self: center;
   background: white;
   margin-bottom: 10px;
+  width: 80%;
+}
+
+.dateInput_container {
+  width: 80%;
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn_container {
+  width: 80%;
+  display: flex;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.inner_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.button {
+  margin: 0
 }
 
 .delete_btn {
-  margin-right: 4em;
   color: #ffffff;
   background-color: #cf5454;
   font-family: "Material Icons";
-  font-size: 18px;
-  padding: 8px 16px;
+  font-size: 20px;
+  padding: 8px 10px;
 }
 
 .delete_btn:hover {
@@ -92,29 +116,8 @@
   background-color: #812b2b;
 }
 
-.addBtn_container {
-  margin-bottom: 18px;
-}
 
-.button {
-  margin: 0px 0px 0px 12px;
-}
 
-.form_header {
-  /* margin-left: 10px; */
-  display: flex;
-  align-self: left;
-  font-weight: 600;
-  font-size: 16px;
-}
 
-.ul {
-  margin: 0;
-}
 
-.hr {
-  margin: 0px 0px -10px 40px;
-  width: 25%;
-  background-color: #b8ceb8;
-}
 

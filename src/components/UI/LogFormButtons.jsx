@@ -4,7 +4,6 @@ const LogFormButtons = ({ editMode, submitting, onClose, clear, deleteLog }) => 
   if (editMode) {
     return (
       <div className={styles.btn_container}>
-        {/* DELETE BTN */}
         <button
           type="button"
           className={`solid-btn ${styles.delete_btn}`}
@@ -13,11 +12,10 @@ const LogFormButtons = ({ editMode, submitting, onClose, clear, deleteLog }) => 
         >
           Delete
         </button>
-        {/* UPDATE & CANCEL BTNS */}
         <div className={styles.btn_container}>
           <button
             className="outline-btn"
-            type="submit"
+            type="button"
             onClick={onClose}
             disabled={submitting}
           >

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DateForm from "./DateForm";
-import styles from "../Dates&Goals.module.css";
+import styles from "./Dates.module.css";
 
 const DateItem = ({ dates, getDates }) => {
   const [editMode, setEditMode] = useState(
@@ -31,20 +31,18 @@ const DateItem = ({ dates, getDates }) => {
 
     return (
       <div key={date.id}>
-        <div className={styles.container}>
+        <div className={styles.item_container}>
           <div className={styles.details_container}>
-            <span className={styles.date_title}>{date.title}</span>
-            <span className={styles.date_description}>{date.description}</span>
+            <span className={styles.title}>{date.title}</span>
+            <span className={styles.description}>{date.description}</span>
           </div>
-          <div className={styles.container}>
-            <span
-              className={styles.date_container}
-              onClick={() => toggleEditMode(index)}
-            >
-              {formattedDate}
-              <span className={styles.time}>
-                {hours}:{min} {ampm}
-              </span>
+          <div
+            className={styles.date_container}
+            onClick={() => toggleEditMode(index)}
+          >
+            {formattedDate}
+            <span className={styles.time}>
+              {hours}:{min} {ampm}
             </span>
           </div>
         </div>

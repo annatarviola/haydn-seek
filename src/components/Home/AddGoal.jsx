@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-import styles from "./Dates&Goals.module.css";
+import styles from "./Goals.module.css";
 import AuthContext from "../../store/authContext";
 import { baseURL } from "../../App";
 
@@ -32,7 +32,7 @@ const AddGoal = (props) => {
   };
 
   return (
-    <div className={styles.addNew_container}>
+    <form className={styles.form}>
       <textarea
         className={styles.input}
         rows="2"
@@ -41,7 +41,7 @@ const AddGoal = (props) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <div className={styles.container}>
+      <div>
         <button className={`outline-btn ${styles.button}`} onClick={props.onClose}>
           Cancel
         </button>
@@ -49,7 +49,7 @@ const AddGoal = (props) => {
           Save
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 

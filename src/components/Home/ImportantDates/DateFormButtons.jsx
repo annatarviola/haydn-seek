@@ -1,4 +1,4 @@
-import styles from "../Dates&Goals.module.css";
+import styles from "./Dates.module.css";
 
 const DateFormButtons = ({
   editMode,
@@ -6,35 +6,48 @@ const DateFormButtons = ({
   toggleAddNew,
   deleteDate,
 }) => {
-  
   const toggle = editMode ? toggleEdit : toggleAddNew;
-  const style = editMode ? styles.container : `${styles.container} ${styles.addBtn_container}`
 
-  return (
-    <div className={style}>
-      {editMode ? (
-        <button
-          type="button"
-          className={`solid-btn ${styles.delete_btn}`}
-          onClick={
-            deleteDate
-          }
-        >
-          delete_forever
-        </button>
-      ) : null}
+  const cancelButton = (
+    <button
+      className={`outline-btn ${styles.button}`}
+      type="button"
+      onClick={toggle}
+    >
+      Cancel
+    </button>
+  );
+
+  const saveButton = (
+    <button className={`solid-btn ${styles.button}`} type="submit">
+      Save
+    </button>
+  );
+
+  const editButtons = (
+    <div className={styles.btn_container}>
       <button
-        className={`outline-btn ${styles.button}`}
         type="button"
-        onClick={toggle}
+        className={`solid-btn ${styles.delete_btn} ${styles.button}`}
+        onClick={deleteDate}
       >
-        Cancel
+        delete_forever
       </button>
-      <button className={`solid-btn ${styles.button}`} type="submit">
-        Save
-      </button>
+      <div className={styles.inner_container}>
+        {cancelButton}
+        {saveButton}
+      </div>
     </div>
   );
+
+  const addButtons = (
+    <div className={styles.btn_container}>
+      {cancelButton}
+      {saveButton}
+    </div>
+  );
+
+  return editMode ? editButtons : addButtons;
 };
 
 export default DateFormButtons;
