@@ -39,14 +39,15 @@ p {
 }
 
 .logBanner {
+  box-sizing: border-box;
   margin: 3px 0px 3px 0px;
   width: 80%;
-  height: 2rem;
+  height: 35px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
-  padding: 3px 0px 3px 0px;
+  padding: 3px;
   font-size: 14px;
 }
 
