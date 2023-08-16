@@ -34,7 +34,7 @@ const AddGoal = (props) => {
   return (
     <div className={styles.addNew_container}>
       <textarea
-        className={styles.addNew_input}
+        className={styles.input}
         rows="2"
         placeholder="What's your new goal?"
         required={true}
@@ -42,10 +42,10 @@ const AddGoal = (props) => {
         onChange={(e) => setValue(e.target.value)}
       />
       <div className={styles.container}>
-        <button className="outline-btn" onClick={props.onClose}>
+        <button className={`outline-btn ${styles.button}`} onClick={props.onClose}>
           Cancel
         </button>
-        <button className="solid-btn" type="submit" onClick={submitHandler}>
+        <button className={`solid-btn ${styles.button}`} type="submit" onClick={submitHandler}>
           Save
         </button>
       </div>

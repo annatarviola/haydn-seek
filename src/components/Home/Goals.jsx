@@ -60,14 +60,12 @@ const Goals = () => {
       <div className={styles.header}>
         <h3>Goals</h3>
         <button type="button" className="icon-btn" onClick={showAddNewGoal}>
-        {!addingGoal ? 'add_circle_outline' : null}
+          {!addingGoal ? "add_circle_outline" : "cancel"}
         </button>
       </div>
       <hr />
-      <ul>
-        {mappedGoals}
-        {addingGoal && <AddGoal onClose={showAddNewGoal} onSave={getGoals} />}
-      </ul>
+      <ul className={styles.ul}>{mappedGoals}</ul>
+      {addingGoal && <AddGoal onClose={showAddNewGoal} onSave={getGoals} />}
     </OuterCard>
   );
 };

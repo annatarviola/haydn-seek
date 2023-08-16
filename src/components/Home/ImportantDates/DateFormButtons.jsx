@@ -8,9 +8,10 @@ const DateFormButtons = ({
 }) => {
   
   const toggle = editMode ? toggleEdit : toggleAddNew;
+  const style = editMode ? styles.container : `${styles.container} ${styles.addBtn_container}`
 
   return (
-    <div className={styles.container}>
+    <div className={style}>
       {editMode ? (
         <button
           type="button"

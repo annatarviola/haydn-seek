@@ -7,6 +7,7 @@ module.exports = {
       const dates = await Date.findAll({ where: { userId: userId } });
 
       res.status(200).send(dates)
+      
     } catch (error) {
       console.log("error in getAllImportantDates");
       console.log(error);
@@ -47,16 +48,16 @@ module.exports = {
 
   deleteDate: async (req, res) => {
     console.log('deletedDate ran')
-    // try {
-    //   const { id } = req.params
-    //   await Date.destroy({ where: { id: +id }})
+    try {
+      const { id } = req.params
+      await Date.destroy({ where: { id: +id }})
 
-    //   res.status(200)
+      res.sendStatus(200)
 
-    // } catch (error) {
-    //   console.log('error in deleteDate')
-    //   console.log(error)
-    //   res.sendStatus(400)
-    // }
+    } catch (error) {
+      console.log('error in deleteDate')
+      console.log(error)
+      res.sendStatus(400)
+    }
   },
 };

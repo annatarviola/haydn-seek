@@ -1,4 +1,4 @@
-import styles from './OuterCard.module.css'
+import styles from './Cards.module.css'
 
 const OuterCard = (props) => {
     return <div className={`${styles.outer} ${props.className}`}>

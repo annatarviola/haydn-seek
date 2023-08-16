@@ -5,7 +5,13 @@ import AuthContext from "../../../store/authContext";
 import DateFormButtons from "./DateFormButtons";
 import { baseURL } from "../../../App";
 
-const DateForm = ({ oldDate, toggleAddNew, getDates, editMode, toggleEdit }) => {
+const DateForm = ({
+  oldDate,
+  toggleAddNew,
+  getDates,
+  editMode,
+  toggleEdit,
+}) => {
   const { token, userId } = useContext(AuthContext);
 
   const [title, setTitle] = useState(editMode ? oldDate.title : "");
@@ -14,12 +20,6 @@ const DateForm = ({ oldDate, toggleAddNew, getDates, editMode, toggleEdit }) => 
   );
   const [date, setDate] = useState(editMode ? oldDate.date : "");
   const [time, setTime] = useState(editMode ? oldDate.time : "");
-
-  // const deleteHandler = () => {
-  //   console.log("deleteDate ran");
-  //   getDates();
-  //   toggleEdit();
-  // };
 
   const deleteDate = () => {
     axios
@@ -30,6 +30,8 @@ const DateForm = ({ oldDate, toggleAddNew, getDates, editMode, toggleEdit }) => 
       })
       .then(() => {
         console.log("deleteDate ran");
+        getDates();
+        toggleEdit();
       })
       .catch((err) => console.log(err));
   };
@@ -62,20 +64,23 @@ const DateForm = ({ oldDate, toggleAddNew, getDates, editMode, toggleEdit }) => 
       setDescription("");
       setDate("");
       setTime("");
+
       getDates();
-      if (editMode) {
-        toggleEdit();
-      } else {
-        toggleAddNew();
-      }
+      editMode ? toggleEdit() : toggleAddNew();
     });
   };
 
   return (
     <>
+      {editMode ? (
+        <h3 className={styles.form_header}>Edit Date</h3>
+      ) : (
+        <h3 className={styles.form_header}>Add Date</h3>
+      )}
+      <hr className={styles.hr} />
       <form className={styles.addNew_container} onSubmit={submitHandler}>
         <input
-          className={styles.addNew_input}
+          className={styles.input}
           type="text"
           placeholder="Event Title"
           value={title}
@@ -83,7 +88,7 @@ const DateForm = ({ oldDate, toggleAddNew, getDates, editMode, toggleEdit }) => 
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
-          className={styles.addNew_input}
+          className={styles.input}
           rows="2"
           placeholder="Description"
           value={description}
@@ -91,14 +96,14 @@ const DateForm = ({ oldDate, toggleAddNew, getDates, editMode, toggleEdit }) => 
         />
         <div className={styles.dateTime_container}>
           <input
-            className={styles.addNew_input}
+            className={styles.input}
             type="date"
             value={date}
             required={true}
             onChange={(e) => setDate(e.target.value)}
           />
           <input
-            className={styles.addNew_input}
+            className={styles.input}
             type="time"
             value={time}
             required={true}

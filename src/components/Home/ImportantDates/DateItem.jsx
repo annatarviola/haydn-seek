@@ -51,7 +51,7 @@ const DateItem = ({ dates, getDates }) => {
         {editMode[index] && (
           <DateForm
             oldDate={date}
-            onSave={getDates}
+            getDates={getDates}
             editMode={editMode}
             toggleEdit={() => toggleEditMode(index)}
           />

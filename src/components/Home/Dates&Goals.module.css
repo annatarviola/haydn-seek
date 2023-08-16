@@ -25,7 +25,7 @@
 }
 
 .details_container {
-  margin-left: 10px;
+  /* margin-left: 10px; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -62,7 +62,6 @@
 }
 
 .time {
-  margin-left: 4px;
   font-family: "Bellota Text";
   font-weight: 400;
 }
@@ -74,7 +73,7 @@
   justify-content: space-between;
 }
 
-.addNew_input {
+.input {
   background: white;
   margin-bottom: 10px;
 }
@@ -84,6 +83,7 @@
   color: #ffffff;
   background-color: #cf5454;
   font-family: "Material Icons";
+  font-size: 18px;
   padding: 8px 16px;
 }
 
@@ -92,6 +92,34 @@
   background-color: #812b2b;
 }
 
+.addBtn_container {
+  margin-bottom: 18px;
+}
+
 .button {
   margin: 0px 0px 0px 12px;
 }
+
+.form_header {
+  /* margin-left: 10px; */
+  display: flex;
+  align-self: left;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.ul {
+  margin: 0;
+}
+
+.hr {
+  margin: 0px 0px -10px 40px;
+  width: 25%;
+  background-color: #b8ceb8;
+}
+
+.form_container {
+  padding: 10px;
+  border: 1px solid #b8ceb8;
+}
+

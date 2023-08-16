@@ -46,15 +46,15 @@ const ImportantDates = () => {
       <div className={styles.header}>
         <h3>Important Dates</h3>
         <button type="button" className="icon-btn" onClick={showAddNewDate}>
-          {!addingDate ? "add_circle_outline" : null}
+          {!addingDate ? "add_circle_outline" : "cancel"}
         </button>
       </div>
       <hr />
       <div>
-        <DateItem dates={dates} getDates={getDates} />
         {addingDate && (
           <DateForm toggleAddNew={showAddNewDate} getDates={getDates} />
         )}
+        <DateItem dates={dates} getDates={getDates} />
       </div>
     </OuterCard>
   );

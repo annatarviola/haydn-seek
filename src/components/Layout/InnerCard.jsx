@@ -1,7 +1,7 @@
-import styles from './InnerCard.module.css'
+import styles from './Cards.module.css'
 
 const InnerCard = (props) => {
-    return <div className={styles.inner}>
+    return <div className={`${styles.inner} ${props.className}`}>
         {props.children}
     </div>
 }
