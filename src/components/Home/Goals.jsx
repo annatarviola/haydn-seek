@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import axios from "axios";
-
+import AuthContext from "../../store/authContext";
+import styles from "./Dates&Goals.module.css";
+import CardHeader from "../UI/CardHeader";
 import OuterCard from "../Layout/OuterCard";
 import AddGoal from "./AddGoal";
-import styles from "./Dates&Goals.module.css";
 import { baseURL } from "../../App";
-import AuthContext from "../../store/authContext";
 
 const Goals = () => {
   const { userId, token } = useContext(AuthContext);
@@ -57,13 +57,11 @@ const Goals = () => {
 
   return (
     <OuterCard>
-      <div className={styles.header}>
-        <h3>Goals</h3>
-        <button type="button" className="icon-btn" onClick={showAddNewGoal}>
-          {!addingGoal ? "add_circle_outline" : "cancel"}
-        </button>
-      </div>
-      <hr />
+      <CardHeader
+        title="Goals"
+        onClick={showAddNewGoal}
+        condition={!addingGoal}
+      />
       <ul className={styles.ul}>{mappedGoals}</ul>
       {addingGoal && <AddGoal onClose={showAddNewGoal} onSave={getGoals} />}
     </OuterCard>

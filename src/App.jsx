@@ -5,7 +5,7 @@ import "./App.css";
 import Header from "./components/Layout/Header";
 import HomeScreen from "./components/Home/HomeScreen";
 import Auth from './components/Forms/Auth'
-import LogForm from './components/Forms/LogForm'
+import NewLogView from "./components/NewLogPage/NewLogView";
 import Register from "./components/Forms/Register";
 
 import AuthContext from './store/authContext'
@@ -23,7 +23,7 @@ function App() {
           <Route index element={authCtx.token ? <HomeScreen /> : <Navigate to='login'/>} />
           <Route path="register" element={!authCtx.token ? <Register /> : <Navigate to='/' />}/>
           <Route path="login" element={!authCtx.token ? <Auth /> : <Navigate to='/' />} />
-          <Route path="add-new-log" element={authCtx.token ? <LogForm /> : <Auth />} />
+          <Route path="add-new-log" element={authCtx.token ? <NewLogView /> : <Auth />} />
         </Routes>
       </div>
     </>

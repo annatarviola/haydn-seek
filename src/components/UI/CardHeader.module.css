@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 -15px 0 -15px;
+}
+
+.title {
+  font-size: 22px;
+  margin: 0px 0px 0px 25px;
+  text-align: start;
+}
+
+.line {
+  height: 1px;
+  margin-left: 55px;
+  margin-bottom: 20px;
+  width: 50%;
+  background-color: var(--mid-green);
+  border: none;
+}

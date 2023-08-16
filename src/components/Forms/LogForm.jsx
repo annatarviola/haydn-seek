@@ -26,7 +26,7 @@ const LogForm = ({ editMode, log, onClose }) => {
   const [exercises, setExercises] = useState(editMode ? log.exercises : "");
   const [repertoire, setRepertoire] = useState(editMode ? log.repertoire : "");
   const [notes, setNotes] = useState(editMode ? log.notes : "");
-
+  
   const clearFormHandler = () => {
     setDate("");
     setQuality("");
@@ -37,8 +37,10 @@ const LogForm = ({ editMode, log, onClose }) => {
     setRepertoire("");
     setNotes("");
   };
+  
+  const savingMessage = editMode ? "Saving changes..." : "Saving..."
 
-  let formattedDate = new Date(date.split("-")).toLocaleDateString("en-us", {
+  const formattedDate = new Date(date.split("-")).toLocaleDateString("en-us", {
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -47,8 +49,10 @@ const LogForm = ({ editMode, log, onClose }) => {
   const handleOptionalValue = (value) => {
     return value.trim() === "" || !value ? "None" : value;
   };
+  
+  const deleteHandler = () => {
+    setSubmitting(true)
 
-  const deleteLog = () => {
     axios
       .delete(`${baseURL}/practicelogs/${log.id}`, {
         headers: {
@@ -56,16 +60,19 @@ const LogForm = ({ editMode, log, onClose }) => {
         },
       })
       .then(() => {
+        setSubmitting(false)
         getLogs();
         onClose();
       })
       .catch((err) => console.log(err));
-  };
+  }
+
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     setSubmitting(true);
+
 
     const parsedDate = new Date(date.split("-"));
 
@@ -213,10 +220,10 @@ const LogForm = ({ editMode, log, onClose }) => {
             submitting={submitting}
             onClose={onClose}
             clear={clearFormHandler}
-            deleteLog={deleteLog}
+            deleteLog={deleteHandler}
           />
 
-          {submitting && <p className={styles.submitting}>Saving...</p>}
+          {submitting && <p className={styles.submitting}>{savingMessage}</p>}
         </form>
       </InnerCard>
     </OuterCard>
@@ -224,3 +231,5 @@ const LogForm = ({ editMode, log, onClose }) => {
 };
 
 export default LogForm;
+
+

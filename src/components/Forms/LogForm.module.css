@@ -41,6 +41,10 @@
   background-color: #812b2b;
 }
 
+.delete_btn:disabled {
+  background-color: var(--disabled-gray);
+}
+
 .submitting {
   display: flex;
   align-self: center;

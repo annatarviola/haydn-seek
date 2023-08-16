@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import OuterCard from "../../Layout/OuterCard";
 import InnerCard from "../../Layout/InnerCard";
 import Weekday from "./Weekday";
 import styles from "./Calendar.module.css";
+import CardHeader from "../../UI/CardHeader";
 
 const Calendar = ({
   prevWeek,
@@ -12,23 +14,33 @@ const Calendar = ({
   year,
   filteredLogs,
 }) => {
+  const navigate = useNavigate();
+
   const [showAllDetails, setShowAllDetails] = useState(false);
-  const [toggleFlag, setToggleFlag] = useState(false)
+  const [toggleFlag, setToggleFlag] = useState(false);
+  const [allowNavigate, setAllowNavigate] = useState(true);
 
   const toggleShow = () => {
     setShowAllDetails(true);
-    setToggleFlag(!toggleFlag)
+    setToggleFlag(!toggleFlag);
   };
 
   const toggleHide = () => {
     setShowAllDetails(false);
-    setToggleFlag(!toggleFlag)
+    setToggleFlag(!toggleFlag);
   };
 
   return (
     <OuterCard className={styles.outer}>
-      <h3>Weekly Practice Log</h3>
-      <hr />
+      <CardHeader
+        title="Weekly Practice Log"
+        onClick={() => {
+          navigate("add-new-log");
+        }}
+        condition={allowNavigate}
+      />
+      {/* <h3>Weekly Practice Log</h3>
+      <hr /> */}
       <div className={styles.nav}>
         <button type="button" className="icon-btn" onClick={prevWeek}>
           arrow_left
@@ -40,7 +52,7 @@ const Calendar = ({
           arrow_right
         </button>
       </div>
-      <InnerCard >
+      <InnerCard>
         <div className={styles.toggle_container}>
           <button className={styles.toggle_btn} onClick={toggleShow}>
             Show All

@@ -29,6 +29,7 @@ const {
   addGoal,
   deleteGoal,
 } = require("./controllers/goals");
+const { getQuote } = require("./controllers/quotes")
 
 const app = express();
 
@@ -62,6 +63,9 @@ app.delete('/importantdates/:id', deleteDate)
 app.get('/goals/:userId', getAllGoals)
 app.post('/goals', addGoal)
 app.delete('/goals/:id', deleteGoal)
+
+// QUOTE
+app.get('/quotes', getQuote)
 
 // the force: true is for development -- it DROPS tables!!!
 // sequelize.sync({ force: true })

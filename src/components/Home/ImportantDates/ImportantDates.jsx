@@ -7,6 +7,7 @@ import styles from "../Dates&Goals.module.css";
 import AuthContext from "../../../store/authContext";
 import { baseURL } from "../../../App";
 import DateItem from "./DateItem";
+import CardHeader from "../../UI/CardHeader";
 
 const ImportantDates = () => {
   const { userId, token } = useContext(AuthContext);
@@ -43,13 +44,11 @@ const ImportantDates = () => {
 
   return (
     <OuterCard>
-      <div className={styles.header}>
-        <h3>Important Dates</h3>
-        <button type="button" className="icon-btn" onClick={showAddNewDate}>
-          {!addingDate ? "add_circle_outline" : "cancel"}
-        </button>
-      </div>
-      <hr />
+      <CardHeader
+        title="Upcoming Dates"
+        onClick={showAddNewDate}
+        condition={!addingDate}
+      />
       <div>
         {addingDate && (
           <DateForm toggleAddNew={showAddNewDate} getDates={getDates} />

@@ -19,6 +19,10 @@ const FullLog = ({ log, index, toggleView }) => {
       return (
         <p className={styles.quality}>You had a challenging practice day.</p>
       );
+    } else if (quality === "None") {
+      return (
+        <p className={styles.quality}></p>
+      );
     } else {
       return;
     }

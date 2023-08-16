@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    margin: 0;
+}
+
+.quote {
+    font-family: 'Bellota Text', cursive;
+    font-size: 32px;
+    margin: 0;
+    margin-bottom: 18px;
+}
+
+.source {
+    font-size: 22px;
+}
