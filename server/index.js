@@ -35,6 +35,8 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+// for deployment
+app.use(express.static(`${__dirname}/src`))
 
 User.hasMany(Goal)
 User.hasMany(Date)
