@@ -48,6 +48,7 @@ const FullLog = ({ log, index, toggleView }) => {
           </button>
         </div>
       </div>
+      
       <div className={`${styles.contentContainer}`}>
         <h4 className={styles.detailHeading}>WORKED ON:</h4>
         <hr className={styles.lineBreak} />

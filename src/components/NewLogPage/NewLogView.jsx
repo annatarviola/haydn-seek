@@ -5,8 +5,8 @@ import styles from "./NewLogView.module.css";
 const NewLogView = () => {
   return (
     <div className={styles.display}>
-      <Quote />
       <LogForm />
+      <Quote />
     </div>
   );
 };

@@ -8,15 +8,22 @@
 .details_container {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   align-items: flex-start;
+  text-align: left;
+  max-width: 70%;
 }
 
 .title {
+  max-width: 100%;
   font-size: 20px;
+  overflow-wrap: break-word;
 }
 
 .description {
-    font-size: 14px;
+  max-width: 100%;
+  font-size: 14px;
+  overflow-wrap: break-word;
 }
 
 .date_container {
@@ -36,9 +43,9 @@
 }
 
 .date_container:hover {
-    cursor: pointer;
-    background-color: #f5e4af;
-    transition: 200ms;
+  cursor: pointer;
+  background-color: #f5e4af;
+  transition: 200ms;
 }
 
 .time {
@@ -93,14 +100,14 @@
   margin-bottom: 18px;
 }
 
+.button {
+  margin: 0;
+}
+
 .inner_container {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-}
-
-.button {
-  margin: 0
 }
 
 .delete_btn {
@@ -115,9 +122,3 @@
   color: #ffffff;
   background-color: #812b2b;
 }
-
-
-
-
-
-

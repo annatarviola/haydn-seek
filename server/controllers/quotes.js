@@ -14,7 +14,7 @@ module.exports = {
         source: `Miles Davis`
       },
       {
-        content: `You have to, take a deep breath. and allow the music to flow through you. Revel in it, allow yourself to awe. When you play allow the music to break your heart with its beauty.`,
+        content: `You have to take a deep breath and allow the music to flow through you. Revel in it, allow yourself to awe. When you play, allow the music to break your heart with its beauty.`,
         source: `Kelly White`
       },
       {
@@ -30,7 +30,7 @@ module.exports = {
         source: `Emory Austin`
       },
       {
-        content: `One good thing about music, when it hits you, you feel no pain.`,
+        content: `One good thing about music: when it hits you, you feel no pain.`,
         source: `Bob Marley`
       },
       {

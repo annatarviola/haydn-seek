@@ -113,10 +113,15 @@ p {
 
 .content {
   width: auto;
-  word-wrap: break-word;
+  max-width: 100%;
+  overflow-wrap: break-word;
   font-weight: 400;
   font-size: 14px;
   text-align: left;
+}
+
+.notes {
+  margin: 0px 20px 20px 10px;
 }
 
 .rightContainer {
@@ -128,12 +133,6 @@ p {
   font-family: "Bellota Text", cursive;
   font-weight: 400;
   align-self: center;
-}
-
-.notes {
-  margin: 0px 20px 20px 10px;
-  align-self: left;
-  word-break: break-all;
 }
 
 .scales {

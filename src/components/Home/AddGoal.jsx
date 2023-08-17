@@ -41,7 +41,7 @@ const AddGoal = (props) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <div>
+      <div className={styles.btn_container}>
         <button className={`outline-btn ${styles.button}`} onClick={props.onClose}>
           Cancel
         </button>
