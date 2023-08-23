@@ -22,7 +22,7 @@ const ImportantDates = () => {
     axios
       .get(`${baseURL}/importantdates/${userId}`, {
         headers: {
-          authentication: token,
+          Authorization: token,
         },
       })
       .then((res) => {

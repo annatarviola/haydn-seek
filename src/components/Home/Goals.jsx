@@ -21,7 +21,7 @@ const Goals = () => {
     axios
       .get(`${baseURL}/goals/${userId}`, {
         headers: {
-          authentication: token,
+          Authorization: token,
         },
       })
       .then((res) => {
@@ -38,7 +38,7 @@ const Goals = () => {
     axios
       .delete(`${baseURL}/goals/${id}`, {
         headers: {
-          authentication: token,
+          Authorization: token,
         },
       })
       .then(() => {

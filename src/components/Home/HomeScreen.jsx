@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import ImportantDates from "./ImportantDates/ImportantDates";
-import AuthContext from "../../store/authContext";
 import DateContext from "../../store/dateContext";
 import GetLogsContext from "../../store/getLogsContext";
 import Goals from "./Goals";
@@ -9,18 +8,9 @@ import Calendar from "./Calendar/Calendar";
 import styles from "./HomeScreen.module.css";
 
 const HomeScreen = () => {
-  const { userId, token } = useContext(AuthContext);
   const { logs } = useContext(GetLogsContext);
 
-  const {
-    prevWeek,
-    startOfWeek,
-    endOfWeek,
-    year,
-    nextWeek,
-    selectedWeek,
-    getEndOfWeek,
-  } = useContext(DateContext);
+  const { selectedWeek, getEndOfWeek } = useContext(DateContext);
 
   const [filteredLogs, setFilteredLogs] = useState([]);
 
@@ -34,14 +24,7 @@ const HomeScreen = () => {
 
   return (
     <div className={styles.main_display}>
-      <Calendar
-        prevWeek={prevWeek}
-        nextWeek={nextWeek}
-        startOfWeek={startOfWeek}
-        endOfWeek={endOfWeek}
-        year={year}
-        filteredLogs={filteredLogs}
-      />
+      <Calendar filteredLogs={filteredLogs} />
       <div className={styles.container}>
         <Counter filteredLogs={filteredLogs} />
         <ImportantDates />

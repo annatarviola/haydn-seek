@@ -56,7 +56,7 @@ const LogForm = ({ editMode, log, onClose }) => {
     axios
       .delete(`${baseURL}/practicelogs/${log.id}`, {
         headers: {
-          authentication: token,
+          Authorization: token,
         },
       })
       .then(() => {
@@ -97,7 +97,7 @@ const LogForm = ({ editMode, log, onClose }) => {
       axios
         .post(`${baseURL}/practicelogs`, body, {
           headers: {
-            authorization: token,
+            Authorization: token,
           },
         })
         .then(() => {
@@ -110,7 +110,7 @@ const LogForm = ({ editMode, log, onClose }) => {
       axios
         .put(`${baseURL}/practicelogs/${log.id}`, body, {
           headers: {
-            authorization: token,
+            Authorization: token,
           },
         })
         .then(() => {

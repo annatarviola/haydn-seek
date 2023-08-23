@@ -17,16 +17,18 @@ export const GetLogsProvider = (props) => {
   const [logs, setLogs] = useState([]);
 
   const getLogs = useCallback(() => {
-    axios
-      .get(`${baseURL}/practicelogs/${userId}`, {
-        headers: {
-          authentication: token,
-        },
-      })
-      .then((res) => {
-        setLogs(res.data);
-      })
-      .catch((err) => console.log(err));
+    if (userId && token) {
+      axios
+        .get(`${baseURL}/practicelogs/${userId}`, {
+          headers: {
+            authorization: token,
+          },
+        })
+        .then((res) => {
+          setLogs(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
   }, [userId, token]);
 
   useEffect(() => {

@@ -50,21 +50,21 @@ app.post("/register", register);
 app.post("/login", login);
 
 // PRACTICE LOGS 
-app.get('/practicelogs/:userId', getDailyLogs)
-app.post('/practicelogs', addLog)
-app.put('/practicelogs/:id', editLog)
-app.delete('/practicelogs/:id', deleteLog)
+app.get('/practicelogs/:userId', isAuthenticated, getDailyLogs)
+app.post('/practicelogs', isAuthenticated, addLog)
+app.put('/practicelogs/:id', isAuthenticated, editLog)
+app.delete('/practicelogs/:id', isAuthenticated, deleteLog)
 
 // IMPORTANT DATES
-app.get('/importantdates/:userId', getAllImportantDates)
-app.post('/importantdates', addDate)
-app.put('/importantdates/:id', editDate)
-app.delete('/importantdates/:id', deleteDate)
+app.get('/importantdates/:userId', isAuthenticated, getAllImportantDates)
+app.post('/importantdates', isAuthenticated, addDate)
+app.put('/importantdates/:id', isAuthenticated, editDate)
+app.delete('/importantdates/:id', isAuthenticated, deleteDate)
 
 // GOALS
-app.get('/goals/:userId', getAllGoals)
-app.post('/goals', addGoal)
-app.delete('/goals/:id', deleteGoal)
+app.get('/goals/:userId', isAuthenticated, getAllGoals)
+app.post('/goals', isAuthenticated, addGoal)
+app.delete('/goals/:id', isAuthenticated, deleteGoal)
 
 // QUOTE
 app.get('/quotes', getQuote)

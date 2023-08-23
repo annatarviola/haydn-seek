@@ -25,7 +25,7 @@ const DateForm = ({
     axios
       .delete(`${baseURL}/importantdates/${oldDate.id}`, {
         headers: {
-          authentication: token,
+          Authorization: token,
         },
       })
       .then(() => {
@@ -45,7 +45,7 @@ const DateForm = ({
           { title, description, date, time },
           {
             headers: {
-              authorization: token,
+              Authorization: token,
             },
           }
         )
@@ -54,7 +54,7 @@ const DateForm = ({
           { title, description, date, time, userId },
           {
             headers: {
-              authorization: token,
+              Authorization: token,
             },
           }
         );

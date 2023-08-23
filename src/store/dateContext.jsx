@@ -37,6 +37,10 @@ export const DateProvider = (props) => {
     });
   };
 
+  const resetWeek = () => {
+    setSelectedWeek(getStartOfWeek(new Date()));
+  }
+
   useEffect(() => {
     setSelectedWeek(getStartOfWeek(new Date()));
   }, []);
@@ -60,6 +64,7 @@ export const DateProvider = (props) => {
     year,
     prevWeek,
     nextWeek,
+    resetWeek,
     getEndOfWeek,
   };
 

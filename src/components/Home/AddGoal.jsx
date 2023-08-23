@@ -18,7 +18,7 @@ const AddGoal = (props) => {
         { value, userId },
         {
           headers: {
-            authorization: token,
+            Authorization: token,
           },
         }
       )
