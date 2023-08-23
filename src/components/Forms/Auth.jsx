@@ -28,7 +28,6 @@ const Auth = () => {
     axios
       .post(`${baseURL}/login`, body)
       .then((res) => {
-        console.log("AFTER AUTH", res.data);
         authCtx.login(res.data.token, res.data.exp, res.data.userId);
         setError(false)
         setSubmitting(false)
