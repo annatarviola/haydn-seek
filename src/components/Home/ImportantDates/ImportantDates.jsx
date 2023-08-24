@@ -4,6 +4,7 @@ import axios from "axios";
 import OuterCard from "../../Layout/OuterCard";
 import DateForm from "./DateForm";
 import AuthContext from "../../../store/authContext";
+import styles from './Dates.module.css'
 import { baseURL } from "../../../App";
 import DateItem from "./DateItem";
 import CardHeader from "../../UI/CardHeader";
@@ -52,7 +53,11 @@ const ImportantDates = () => {
         {addingDate && (
           <DateForm toggleAddNew={showAddNewDate} getDates={getDates} />
         )}
-        <DateItem dates={dates} getDates={getDates} />
+        {dates.length > 0 ? (
+          <DateItem dates={dates} getDates={getDates} />
+        ) : (
+          <p className={styles.empty_dates}>No dates found.</p>
+        )}
       </div>
     </OuterCard>
   );

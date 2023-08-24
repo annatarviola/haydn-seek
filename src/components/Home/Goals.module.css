@@ -45,3 +45,7 @@
 .button {
   margin: 0;
 }
+
+.empty_goals {
+  font-size: 14px;
+}

@@ -62,7 +62,12 @@ const Goals = () => {
         onClick={showAddNewGoal}
         condition={!addingGoal}
       />
-      <ul className={styles.list}>{mappedGoals}</ul>
+      {goals.length > 0 ? (
+        <ul className={styles.list}>{mappedGoals}</ul>
+      ) : (
+        <p className={styles.empty_goals}>No goals found.</p>
+      )}
+
       {addingGoal && <AddGoal onClose={showAddNewGoal} onSave={getGoals} />}
     </OuterCard>
   );
